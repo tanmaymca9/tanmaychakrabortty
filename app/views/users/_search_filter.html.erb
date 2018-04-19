@@ -1,0 +1,50 @@
+  	<h3>Colleges</h3>
+			        	<%if @school1.present? %>
+				        	<% @school1.each do |school| %>
+					        	<div class="bigbox">
+					        		<div class="row">
+					        			<div class="col-md-12">
+								        	<div class="col-md-2">
+								        		<% if school.profile_image.present?%>
+									                <%= image_tag school.profile_image ,class: "img-thumbnail img-responsive collglogo"%>
+									               	<%else%>
+									               		<%= image_tag("img.jpg",class: "img-thumbnail img-responsive collglogo")%>
+											    <% end %>
+								            </div>
+								            <div class="col-md-10">
+								            	<a href="/users/show?id=<%= school.id %>">
+
+								            <%#= link_to users_show_path do %>
+								        		<h4 id="<%= school.id %>"><%= school.name %> </h4>
+								        		<%#end%>
+								        		</a>
+								        		<span> <i class="fa fa-map-marker"></i> <%= school.address%>,<%= school.city%>,<%= school.country%> </span>
+								            </div>
+						                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
+						                    	<div class="col-md-3 col-sm-6 col-xs-6">
+						                    		<i class="fa fa-map-marker "></i> <span>Avg Annual Fees</span>
+						                    		<%if school.courses.present?%>
+								        			<h6><%= school.courses.first.course_fee %></h6>
+								        			<%else%><h6>Not Mention</h6><%end%>
+								        	 	</div>
+									        	<div class="col-md-3 col-sm-6 col-xs-6">
+							                    	<i class="fa fas fa-trophy"></i> <span>Scholership</span>
+									        		<h6>Available</h6>
+									        	</div>
+									        	<div class="col-md-3 col-sm-6 col-xs-6">
+							                    	<i class="fa fas fa-bed"></i> <span>Hostel</span>
+									        		<h6>Availavle</h6>
+									        	</div>
+								        	 	<div class="col-md-3 col-sm-6 col-xs-6">
+						                    		<button class="btn btn-primary TxtceNtr">Apply Now </button>
+								        	 	</div>
+						                    </div>
+			                  			</div>
+					        		</div>
+					        	</div>
+					        <%end%>
+					    <%else%>
+			        		<p>No Result Found</p>
+			        	<%end%>
+
+</div>

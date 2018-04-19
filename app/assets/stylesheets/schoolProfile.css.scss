@@ -1,0 +1,357 @@
+form,
+label{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+
+/* start editing from here */
+
+a {
+	text-decoration: none;
+}
+.container-fluid.schbckimg{
+	background:  asset_url("content.jpg") no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-o-background-size: 100% 100%;
+	-ms-background-size: 100% 100%;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+label.control-label {
+	color: #000;
+	margin-bottom: 5px;
+	font-style: italic;
+	font-size: 0.9em;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	padding-right:63px;
+}
+label.control{
+	color: #000;
+	margin-bottom: 5px;
+	font-style: italic;
+	font-size: 0.9em;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	padding-right:7px;
+}
+label.controlLabel {
+	color: #000;
+	margin-bottom: 5px;
+	font-style: italic;
+	font-size: 0.9em;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	padding-right:0px;
+}
+
+form-group.field {
+	margin-bottom: 0;
+}
+.has-error .control-label,
+.has-error .radio,
+.has-error .radio-inline,
+.has-error.radio label,
+.has-error.radio-inline label {
+	color: #000;
+}
+
+.content-agileits {
+  margin: 8em auto 2em;
+  width: 67%;
+}
+
+.left {
+	width: 50%;
+	float: left;
+	padding:1em 2em;
+	background: #fff;
+}
+
+.right {
+  background: rgba(0, 0, 0, 0)  asset_url("school.jpg") no-repeat scroll center center / cover ;
+  float: left;
+  min-height: 818px;
+  position: relative;
+  width: 50%;
+}
+.heading-text {
+	position:absolute;
+	top:30px;
+	background:rgba(255,255,255,0.5);
+}
+.student-profile {
+  color: #fff;
+  padding: 25px;
+  text-align: center;
+}
+.heading-text {
+  background: rgba(0,0,0,0.5) none repeat scroll 0 0;
+  display: block;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+/*-------input#name,
+input#inputEmail,
+input#Phone{
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-o-border-radius: 0;
+	-ms-border-radius: 0;
+}
+
+input#name,
+input#inputEmail,
+input#Phone,
+input#Address,
+input#City, 
+input#Country,
+input#Class{
+	width: 100%;
+	height: 45px;
+	font-size: 16px;
+	border: 1px solid #337ab7;
+	font-weight: normal;
+	color: #000;
+}-------*/
+
+input[type="file"] {
+    display: inline;
+}
+
+
+
+label.w3layouts {
+	display: inline-block;
+	background: #fff;
+	padding: 0.5em 0;
+	margin-left: 2em;
+	font-size: 1em;
+	color: #100d0d;
+	cursor: pointer;
+}
+
+.w3ls-opt input[type="radio"] {
+	margin-right: 0.5em;
+}
+.frmgrpcust{
+	margin-bottom:5px;
+}
+.content-agileits button.btn.btn-lg {
+	width: 100%;
+	height: 45px;
+	margin: 0 auto;
+	text-align: center;
+	float: none;
+	color: #fff;
+	font-size: 17px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	display: block;
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-o-border-radius: 0;
+	-ms-border-radius: 0;
+	background: #890f0a;
+	transition: all 0.5s ease-in-out;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	text-transform: uppercase;
+}
+
+.btn.disabled,
+.btn[disabled],
+fieldset[disabled] .btn {
+	background: #890f0a;
+	opacity: 0.7;
+}
+
+
+
+
+/* -- Responsive code -- */
+@media screen and (max-width: 1080px) {
+	
+	.right {
+		min-height: 718px;
+	}
+}
+
+@media screen and (max-width: 1050px) {
+	.right {
+		min-height: 719px;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.content-agileits {
+		width: 80%;
+	}
+	
+}
+
+@media screen and (max-width: 900px) {
+	h1.title {
+		font-size: 2.3em;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	h1.title {
+		font-size: 2.1em;
+	}
+	.content-agileits {
+		width: 88%;
+	}
+	p.copyright-w3ls {
+		font-size: 0.9em;
+	}
+	input#firstname,
+	input#lastname,
+	input#inputEmail,
+	input#Phone {
+		height: 39px;
+	}
+	.right {
+		min-height: 694px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.left {
+		width: 100%;
+		float: none;
+	}
+	.right {
+		min-height: 372px;
+		width: 100%;
+		float: none;
+	}
+	label.w3layouts {
+    background: #fff none repeat scroll 0 0;
+    color: #100d0d;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1em;
+    margin-left: 0;
+    padding: 0.5em 0;
+}
+.heading-text {
+  background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+  display: block;
+  position: absolute;
+  top: 25%;
+  width: 100%;
+}
+	
+}
+
+@media screen and (max-width: 736px) {
+	.content-agileits {
+		margin: 3em auto 2em;
+	}
+}
+
+@media screen and (max-width: 667px) {
+	h1.title {
+		font-size: 1.8em;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	h1.title {
+		letter-spacing: 1px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	h1.title {
+		font-size: 1.8em;
+	}
+	p.copyright-w3ls {
+		padding: 1em;
+		line-height: 1.7;
+	}
+}
+
+@media screen and (max-width: 568px) {
+	.content-agileits button.btn.btn-lg {
+		padding: 0;
+		height: 43px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.content-agileits {
+		margin: 2em auto;
+	}
+	.content-agileits {
+		width: 88%;
+	}
+	h1.title {
+		font-size: 1.6em;
+	}
+	.right {
+		min-height: 330px;
+	}
+	.content-agileits {
+  margin: 8em auto 1em;
+}
+}
+
+@media screen and (max-width: 414px) {
+	.content-agileits {
+		width: 96%;
+	}
+}
+
+@media screen and (max-width: 384px) {
+	h1.title {
+		font-size: 1.45em;
+	}
+	.content-agileits button.btn.btn-lg {
+		height: 37px;
+	}
+}
+
+@media screen and (max-width: 375px) {
+	.left {
+		padding: 2em 2em 1em;
+	}
+	.right {
+		min-height: 300px;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	h1.title {
+		font-size: 1.4em;
+	}
+	label.w3layouts {
+		margin-left: 1em;
+	}
+	.left {
+		padding: 2em 1.5em 1em;
+	}
+	.content-agileits {
+		width: 98%;
+	}
+}
+
+
+/* -- //Responsive code -- */

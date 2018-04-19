@@ -1,0 +1,79 @@
+<title>Sign In</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%= stylesheet_link_tag  "bootstrap.min" %>
+<%= stylesheet_link_tag  "font-awesome.min" %>
+<%= stylesheet_link_tag  "style" %>
+<%= stylesheet_link_tag  "login" %>
+
+<%= render 'layouts/header'%>
+
+<div class="container-fluid backgrdimg">  
+  <div id="login-box">
+    <div class="row mainrowcust">
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 padzerosty">
+        <div class ="leftone">
+          <h1>Login</h1>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
+            <%= flash[:recaptcha_error] %>
+            <%= f.text_field :email, autofocus: true, placeholder: "E-mail",required: true %>
+            <%= f.password_field :password, autofocus: true, placeholder: "Password",required: true %>
+            <%= recaptcha_tags theme: 'white',class: "g-recaptcha",required: true %>
+            <%=f.submit "Login"%>
+            <div class="signin-text">
+              <div class="text-left">
+                <%= link_to "Forgot Password?",new_password_path(resource_name), class: "text-center"%>
+              </div>
+              <div class="text-right">
+                <%= link_to "Create New Account?",new_user_registration_path, class: "text-center"%>
+              </div>
+              <div class="clear"> </div>
+            </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 padzerosty">
+        <div class="right">
+          <div class="scoilbtnctr">
+            <%= link_to user_facebook_omniauth_authorize_path do %>
+              <button class="social-signin facebook">Sign Up with facebook</button>
+            <% end %>
+            <%= link_to user_twitter_omniauth_authorize_path do %>
+              <button class="social-signin twitter">Sign Up with Twitter</button>
+            <% end %>
+            <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+              <button class="social-signin google">Sign Up with Google+</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+<%= render 'layouts/footer'%>
+
+<%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "bootstrap.min" %>
+<%= javascript_include_tag "jquery.stellar" %>
+<%= javascript_include_tag "jquery.appear" %>
+<%= javascript_include_tag "jquery.nicescroll.min" %>
+<%= javascript_include_tag "script" %>
+
+<style type="text/css"> 
+#rc-imageselect,.g-recaptcha {
+transform:scale(0.77);
+-webkit-transform:scale(0.77);
+transform-origin:0 0;
+-webkit-transform-origin:0 0;
+} 
+
+@media screen and (max-height: 575px){ 
+  #rc-imageselect, .g-recaptcha {
+    transform:scale(0.77);
+    -webkit-transform:scale(0.77);
+    transform-origin:0 0;
+    -webkit-transform-origin:0 0;
+    } 
+  }
+</style> 

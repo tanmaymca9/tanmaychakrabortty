@@ -1,0 +1,59 @@
+.counting-box{
+	border: 1px solid #D1C2BA;
+	text-align: center;
+	
+	margin: 10px;
+	padding: 12px;
+	flex: auto;
+}
+.counting-box img {
+  height: 90px;
+  width: 70%;
+}
+.counting-box p{
+	font-family: 'Roboto Condensed', sans-serif;
+	color: #525252;
+}
+#encounter{
+	border-bottom: 2px solid #3185E8;
+}
+#battles{
+	border-bottom: 2px solid #D9884D;
+}
+#locations{
+	border-bottom: 2px solid #D95E4D;
+}
+@media (min-width: 600px) {
+	body{
+		padding-top: 5px;
+		background-color: #fff;
+		background-image: url(https://ak7.picdn.net/shutterstock/videos/16119847/thumb/1.jpg);
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	#container{
+		background-color: rgba(13, 24, 33, 0.84);
+		padding: 15px;
+		border-radius: 10px;
+		width: 360px;
+	}
+}
+
+
+
+ .row.vdiocont {
+  margin: 70px auto;
+  width: 400px;
+}
+
+
+@media screen and (max-width:767px) {
+   .row.vdiocont {
+  margin: 70px auto;
+  width:100%;
+}
+.form-group.margunrve {
+  margin: 15px 0px ;
+}
+
+}

@@ -1,0 +1,19 @@
+			
+<div id="scholarship">
+	<div class="container eliBox">
+		<div class="CollegeBox">
+		<%if @scholership.present?%>
+			<%@scholership.each do |sch|%>
+			<span class="overview"><%= sch.title.titleize%></span>
+			<hr>
+			<div class="tabx">
+				<p class="sship"><%= sch.description%></p>
+			</div>
+			<%end%>
+			<%else%>
+			No Scholership Available Right Now..
+		  <%end%>
+			</div>
+		
+	</div>
+</div>

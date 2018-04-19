@@ -1,0 +1,148 @@
+<title>Admin Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%= render "layouts/stylesheets"%>
+
+<div class="bg-dark dk" id="wrap">
+	<%= render "admins/top"%>
+    <div id="left">
+        <div class="media user-media bg-dark dker">
+		    <div class="user-media-toggleHover">
+		      <span class="fa fa-user"></span>
+		    </div>
+		    <div class="user-wrapper bg-dark">
+		      <a class="user-link" href="">
+		          <%= image_tag('user.gif',class: "media-object img-thumbnail user-img")%>
+		        <span class="label label-danger user-label"><%= current_admin.sign_in_count%></span>
+		      </a>
+		      <div class="media-body">
+		        <h5 class="media-heading">SUPER ADMIN</h5>
+		        <ul class="list-unstyled user-info">
+		          <li>ADMIN</li>
+		          <li>Last Access : <br>
+		            <small><i class="fa fa-calendar"></i>&nbsp;<%= current_admin.last_sign_in_at.strftime("%d %B %t at %I:%M %p")%></small>
+		            <%#= link_to "(Edit Profile)" ,edit_user_registration_path%>
+		          </li>
+		        </ul>
+		      </div>
+		    </div>
+		  </div>
+        <!-- #menu -->
+        <ul id="menu" class="bg-blue dker">
+            <li class="nav-divider"></li>  
+            <li class="">
+              <%= link_to admins_path do%>
+                  <i class="fa fa-dashboard"></i>
+                  <span class="link-title">&nbsp;Dashboard</span>
+              <%end%>
+            </li>
+            <li class="">
+                <%= link_to admin_schools_path(current_admin) do%>
+                  <i class="fa fa-tasks"></i>
+                  <span class="link-title">Schools</span>
+                <%end%>
+            </li>
+            <li class="">
+                <%= link_to admin_teachers_path(current_admin) do%>
+                  <i class="fa fa-tasks"></i>
+                  <span class="link-title">Teachers</span>
+                <%end%>
+            </li>
+            <li class="">
+                <%= link_to admin_students_path(current_admin) do%>
+                  <i class="fa fa-pencil"></i>
+                  <span class="link-title">Students</span>
+                <%end%>
+            </li>
+            <li class = "active">
+                <%= link_to admin_vendors_path(current_admin) do%>
+                  <i class="fa fa-table"></i>
+                  <span class="link-title">Vendors</span>
+                <%end%>
+            </li>
+            <li>
+                <a href="">
+                  <i class="fa fa-font"></i>
+                  <span class="link-title">Total Earning</span>
+                </a>
+            </li>
+            <li class="nav-divider"></li>
+        </ul>
+        <!-- /#menu -->
+    </div>
+    <!-- /#left -->
+    <div id="content">
+        <div class="outer">
+            <div class="inner bg-light lter">
+      			<div>
+      				<h3>VENDORS</h3>
+				    <div class="table-responsive">          
+                        <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Contact</th>
+                                <th>Status</th>
+                              </tr>
+                            </thead>
+                            <% @vendors.each do |vendor|%>
+                                <tbody>
+                                  <tr>
+                                    <td><%=vendor.id%></td>
+                                    <td><%=vendor.name%></td>
+                                    <td><%=vendor.email%></td>
+                                    <td><%=vendor.phone_no%></td>
+                                    <td>
+                                     <%=link_to "Edit",admin_school_update_path(vendor.id),class: "btn btn-primary btn-xs"%>
+                                        <% if vendor.active? %> <%=link_to "Deactivate",admin_activate_path(vendor.id), method: :post, data: { confirm: "Do you to want Deactivate Vendor Profile?" }, class: "btn btn-danger btn-xs"%>
+                                        <%else%>
+                                            <%=link_to "Activate",admin_activate_path(vendor.id), method: :post, data: { confirm: "Do you want to Activate Vendor Profile?" }, class: "btn btn-success btn-xs"%>
+                                        <% end %>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                            <%end%>
+                        </table>
+                    </div>
+    			</div>
+				<hr>
+            </div>
+            <!-- /.inner -->
+        </div>
+        <!-- /.outer -->
+    </div>
+    <!-- /#content -->
+</div>
+<!-- /#wrap -->
+<footer class="Footer bg-dark dker">
+    <p>2017 &copy; Tabashi Technology Private Limited</p>
+</footer>
+<!-- /#footer -->
+<!-- #helpModal -->
+<div id="helpModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+       
+<%= render "layouts/javascripts"%>

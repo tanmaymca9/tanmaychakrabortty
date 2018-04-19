@@ -1,0 +1,64 @@
+<div class="container-fluid contboderone">
+	<h3 style="text-align:center;">RECENTLY ADDED SCHOOLS</h3>
+	<%if @school.present?%>
+		<div class="row RowMarginzero">
+			<% @school.last(4).each do |school|%>
+				<div class="col-sm-6 col-md-3">
+					<div id="wrapper">
+						<div class="cards">
+							<div class="card-header">
+								<div class="card-header-mask">
+									<div class="card-header-date">
+										<div class="card-header-date-day"><%=school.created_at.strftime("%d")%></div>
+										<div class="card-header-date-month"><%=school.created_at.strftime("%b")%></div>
+									</div>
+								</div>
+							</div>
+							<div class="card-body">
+								<div class="card-body-header">
+									<div class="card-body-header-category">
+										<% if school.profile_image.present?%>
+											<%= image_tag school.profile_image ,class: "img-respomsive Companylg" , :size => "70x55" %>
+										<%else%>
+											<%= image_tag("aj.jpg",class: "img-respomsive Companylg") %>
+										<%end%>
+									</div>
+									<p class="card-body-header-sentence">
+										<span><%= school.name %></span>
+									</p>
+									<h5 class="hfivestyle"><%= school.description.first(150)  if school.description.present? %>..</h5>
+
+									<a href="/users/show?id=<%= school.id %>" target="_blank" class="custanchor">read more...</a>
+								</div>
+								<div class="card-body-footer">
+									<div class="row">
+										<div class="col-md-4 col-xs-4 text-center">
+											<ul class="soclmd" style="display: none;">
+												<a href="#"><li><i class="fa fa-facebook-square"></i></li></a>
+												<a href="#"><li><i class="fa fa-twitter"></i></li></a>
+												<a href="#"><li><i class="fa fa-whatsapp"></i></li></a>
+												<a href="#"><li><i class="fa fa-envelope-o"></i></li></a>
+												<a href="#"><li><i class="fa fa-linkedin"></i></li></a>
+											</ul>
+											<span class="socxialtoggle"><i aria-hidden="true" class="fa fa-share-alt"></i></span>
+										</div>
+										<div class=" col-md-8 col-xs-8 text-center">
+											<a target="_blank" href="viewjobs.html">
+												<span class="Footeranchor">Open in a new tab</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<%end%>
+		</div>
+	<%else%>
+		<h4 style="text-align:center;">No School Added Yet</h4>
+	<%end%>
+	<div class="row explorebtnrw">
+		<a class="text-center" href="#"><button class="btn btn-primary prmbtnsty">VIEW ALL</button></a>
+	</div>
+</div>

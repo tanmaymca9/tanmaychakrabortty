@@ -1,0 +1,74 @@
+<div id="campus">
+	<div class="container overviewBox">
+		<span class="overview">Infrastructure</span>
+		<hr>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="col-sm-12 col-xs-12 col-md-9 col-lg-9">
+					<p><% if @college.overviews.present? %>
+					<p class="crdtxt"><%=@college.overviews.first.description %> </p>
+					<%else%>
+					<p class="crdtxt">abcd</p>
+					<%end%> </p>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
+					<div class="building">
+						<%if @college.cover_image.present?%>
+							<%= image_tag @college.cover_image , class: "img-responsive schBuilding"%>
+						<%else%>
+							<%= image_tag("logo1.png",class: "img-responsive scHbackimg")%>
+						<%end%>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container CollegeBox">
+		<span class="overview">Facilities</span>
+		<hr>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<div class="jcarousel-wrapper">
+				<div class="jcarousel" >
+					<ul>
+						<% @all_college.each do |img| %>
+							<%if img.profile_image.present?%>
+								<li><%= image_tag img.profile_image, class: "img-responsive schBuilding"%></li>
+							<%else%>
+								<li><%= image_tag("logo1.png",class: "img-responsive schBuilding")%></li>
+							<%end%>
+						<%end%>
+					</ul>
+				</div>
+				<a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+				<a href="#" class="jcarousel-control-next">&rsaquo;</a>
+			</div>
+		</div>
+	</div>
+					
+			
+	<div class="container CollegeBox">
+		<span class="overview">Similar Schools</span>
+		<hr>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<div class="jcarousel-wrapper">
+				<div class="jcarousel" >
+					<ul>
+					<% @all_college.each do |img| %>
+						<%if img.profile_image.present?%>
+							<li><a href="/users/show?id=<%= img.id %>" target="_blank"><%= image_tag img.profile_image, class: "img-responsive schBuilding"%><%= img.name %></a></li>
+						<%else%>
+							<li>
+							<%= image_tag("logo1.png",class: "img-responsive schBuilding")%></li>
+						<%end%>
+					<%end%>
+					</ul>
+				</div>
+				<a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+				<a href="#" class="jcarousel-control-next">&rsaquo;</a>
+			</div>
+		</div>
+	</div>
+</div>
+<%= javascript_include_tag "school_show" %>

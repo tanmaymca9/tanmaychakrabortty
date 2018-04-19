@@ -1,0 +1,120 @@
+<title>Current Requirements</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<%= stylesheet_link_tag  "bootstrap.min" %>
+<%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+<%= stylesheet_link_tag  "style" %>
+<%= stylesheet_link_tag  "postjob" %>
+
+<style>
+.teAChbox {
+  border: 5px solid;
+  padding: 0 10px;
+}
+.col-md-6.col6cust {
+  margin: 5px 0;
+}
+.Aplybtn {
+  text-align: right;
+}
+
+</style>
+
+<%=render "layouts/header"%>
+
+	<section class="homeone" id="home" data-stellar-background-ratio="0.4">
+	</section>
+		
+    <div class="container-fluid background">
+        <div class="loginBox">
+            <ul class="nav nav-pills nav-justified ">
+                <li class="active"><a data-toggle="pill" href="#hometab" class="mycls">Teacher</a></li>
+                <li><a data-toggle="pill" href="#menu1" class="mycls">Vendor</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="hometab" class="tab-pane fade in active">
+                    <div class="row">
+                        <% if @teachers.present? %>
+                            <% @teachers.each do |teacher|%>
+                              	<div class="col-md-6 col6cust">
+                                    <div class="teAChbox">
+                                        <h4> Hi,We Are Looking For <%=teacher.subject%> Teacher </h4>
+                                        <h5>Qualification : <%=teacher.qualification%></h5>
+                                        <h5>Experience : <%=teacher.experience%></h5>
+                                        <h5>Level : <%=teacher.level%></h5>
+                                        <h5>salary : <%=teacher.annual_salary%></h5>
+                                        <h5><% if teacher.job_type?%>
+                                            Job Type : Part Time
+                                            <%else%>Job Type : Full Time<%end%></h5>
+                                        <div class="Aplybtn">
+                                            <%=link_to "Apply",users_apply_to_post_path(teacher),class: "btn btn-primary"%>
+                                            <button type="button" class="btn btn-primary">Apply</button>
+                                        </div>	
+                                    </div>
+                                </div>
+                            <%end%>
+                        <% else %>
+                            <div class="col-md-6 col6cust">
+                                <div class="teAChbox">
+                                    <h4> Hi,We Are Looking For Math Teacher </h4>
+                                    <h5>Qualification : M-Teck</h5>
+                                    <h5>Experience : 3 Years</h5>
+                                    <h5>Level : Primary</h5>
+                                    <h5>salary : 2-3 Lac</h5>
+                                    <h5>job Type : Full Time</h5>
+                                    <div class="Aplybtn">
+                                        <button type="button" class="btn btn-primary">Apply</button>
+                                    </div>  
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+                <div id="menu1" class="tab-pane fade">
+                    <div class="row">
+                        <% if @vendors.present? %>
+                            <% @vendors.each do |vendor|%>
+                              	<div class="col-md-6 col6cust">
+                                    <div class="teAChbox">
+                                        <h4> Hi,We Are Looking For Vendor </h4>
+                                        <h5>Address : <%= vendor.location%></h5>
+                                        <h5>Article : <%= vendor.article%></h5>
+                                        <h5>Tendor Value : <%= vendor.vendor_value%></h5>
+                                        <h5><% if vendor.supplier?%>
+                                            Vendor Type : One Time Supplier
+                                            <%else%>Vendor Type : All Time Supplier<%end%></h5>
+                                        <div class="Aplybtn">
+                                            <button type="button" class="btn btn-primary">Apply</button> 	
+                                        </div>	
+                                    </div>
+                                </div>
+                            <% end %>
+                        <% else %>
+                            <div class="col-md-6 col6cust">
+                                <div class="teAChbox">
+                                    <h4> Hi,We Are Looking For Vendor </h4>
+                                    <h5>subject : Book</h5>
+                                    <h5>Address : Bangloare</h5>
+                                    <h5>Article : Primary</h5>
+                                    <h5>Tendor Value : 2-3 Lac</h5>
+                                    <h5>vendor Type : all Time</h5>
+                                    <div class="Aplybtn">
+                                        <button type="button" class="btn btn-primary">Apply</button>    
+                                    </div>  
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%= render "layouts/footer"%>
+
+<%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "bootstrap.min" %>
+<%= javascript_include_tag "jquery.stellar" %>
+<%= javascript_include_tag "jquery.appear" %>
+<%= javascript_include_tag "jquery.nicescroll.min" %>
+<%= javascript_include_tag "script" %>

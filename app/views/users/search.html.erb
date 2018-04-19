@@ -1,0 +1,209 @@
+<title>Search</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%= stylesheet_link_tag  "bootstrap.min" %>
+<%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+<%= stylesheet_link_tag  "header" %>
+	  
+<style type="text/css">
+
+    .container-fluid.Filtercont {
+       background: #f4f3f2 none repeat scroll 0 0;
+        }
+	.container-fluid.filterschool {
+  padding: 0 0 50px;
+}
+      
+      p {
+	  margin-bottom: 26px;
+	  word-wrap: break-word;
+	}
+	.smallbox {
+	  border: 1px solid;
+	  border-radius: 8px;
+	  padding: 7px;
+	}
+	.bigbox {
+	  border: 1px solid;
+	  border-radius: 8px;
+	  margin-bottom: 10px;
+	  padding: 10px;
+	}
+	.img-responsive.collglogo {
+	  width:80px;
+	}
+	.col-md-12.Anxtysf {
+	  padding: 20px 0 2px;
+	  
+	}
+	.btn.btn-primary.TxtceNtr {
+	  float: right;
+	}
+	
+	.paDtpZeRo {
+margin-top: 0 !important;
+}
+</style>
+
+<%=render "layouts/header"%>
+
+		
+	<section class="home" id="home" data-stellar-background-ratio="0.4">
+	</section>
+	<div class="container-fluid Filtercont">
+		<div class="container-fluid filterschool">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="col-md-2">
+						<h3>Degree</h3>
+				    	<div class="smallbox">
+				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+				    		<% @course.each do |course|%>
+					     		<div class="checkbox">
+					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo degree_id-<%= course.id %> user_id-<%= course.user_id %>"><%= course.degree_name%></label>
+					      			<script type="text/javascript">
+					                    $('.degree_id-<%= course.id %>').click(function(){
+					                       $.ajax({
+					                          url:'/users/search',
+					                          type:'POST',
+					                          beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+					                          dataType:'json',
+					                          data:{
+					                              myparam1: <%= course.id %>,
+					                              myparams: <%= course.user_id%>,
+					                          },
+					                          success:function(data){
+					                          	var data1 = JSON.stringify(data);
+					                          	var stringify = JSON.parse(data1);
+					                          	var dataArray = stringify["event"];
+					                          	if (dataArray.length > 0) {
+													for (var i = 0; i < dataArray.length; i++) {
+														$("#college_list").hide();
+															$("#search_res").show();
+														}
+
+					                          	} else {}
+					                          		
+					                              debugger;
+					                          },
+					                          error:function(error){
+					                          	// console.log(error.responseText);
+					                              debugger;
+					                          }
+					                      });
+					                  });
+					                </script>
+					    		</div>
+			        		<%end%>
+			        	</div>
+						<h3>City</h3>
+				    	<div class="smallbox">
+				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+				    		<% @city.each do |city|%>
+					     		<div class="checkbox">
+					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo"><%= city.name %></label>
+					    		</div>
+			        		<%end%>
+			        	</div>
+              			<h3>Fee Structure</h3>
+				    	<div class="smallbox">
+				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+				     		<div class="checkbox">
+				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="1">Less that 50K</label>
+				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">50K to 1Lac</label>
+				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">1Lac to 1.5Lac</label>
+				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">More than 1.5Lac</label>
+				    		</div>
+			        	</div>
+			        	<h3>Mode of Eduation</h3>
+				    	<div class="smallbox">
+				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+				     		<div class="checkbox">
+				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="1">Regular</label>
+				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">Correspondence</label>
+				    		</div>
+			        	</div>
+			        	<h3>Specialization</h3>
+				    	<div class="smallbox">
+				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+				    		<% @course.each do |course|%>
+					     		<div class="checkbox">
+					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="1"><%= course.course_name%></label>
+					    		</div>
+				    		<%end%>
+			        	</div>
+			        </div>
+			        <div id="college_list" class="col-md-10">
+			        	<h3>Colleges</h3>
+			        	<%if @school.present? %>
+				        	<% @school.each do |school| %>
+					        	<div class="bigbox">
+					        		<div class="row">
+					        			<div class="col-md-12">
+								        	<div class="col-md-2">
+								        		<% if school.profile_image.present?%>
+									                <%= image_tag school.profile_image ,class: "img-thumbnail img-responsive collglogo"%>
+									               	<%else%>
+									               		<%= image_tag("img.jpg",class: "img-thumbnail img-responsive collglogo")%>
+											    <% end %>
+								            </div>
+								            <div class="col-md-10">
+								            	<a href="/users/show?id=<%= school.id %>">
+
+								            <%#= link_to users_show_path do %>
+								        		<h4 id="<%= school.id %>"><%= school.name %> </h4>
+								        		<%#end%>
+								        		</a>
+								        		<span> <i class="fa fa-map-marker"></i> <%= school.address%>,
+								        		<% if @city = City.find_by_id(school.city_id)%><%= @city.name%> 
+								        		<%end%>,
+								        		<% if @state = Stat.find_by_id(school.state_id)%><%= @state.name%> 
+								        		<%end%>,
+								        		<% if @country = Countr.find_by_id(school.country_id)%>
+								        		 <%= @country.name%> 
+								        		 <%end%></span>
+								            </div>
+						                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
+						                    	<div class="col-md-3 col-sm-6 col-xs-6">
+						                    		<i class="fa fa-map-marker "></i> <span>Avg Annual Fees</span>
+						                    		<%if school.courses.present?%>
+								        			<h6><%= school.courses.first.course_fee %></h6>
+								        			<%else%><h6>Not Mention</h6><%end%>
+								        	 	</div>
+									        	<div class="col-md-3 col-sm-6 col-xs-6">
+							                    	<i class="fa fas fa-trophy"></i> <span>Scholarship</span>
+									        		<h6>Available</h6>
+									        	</div>
+									        	<div class="col-md-3 col-sm-6 col-xs-6">
+							                    	<i class="fa fas fa-bed"></i> <span>Hostel</span>
+									        		<h6>Availavle</h6>
+									        	</div>
+								        	 	<div class="col-md-3 col-sm-6 col-xs-6">
+						                    		<button class="btn btn-primary TxtceNtr">Apply Now </button>
+								        	 	</div>
+						                    </div>
+			                  			</div>
+					        		</div>
+					        	</div>
+					        <%end%>
+					    <%else%>
+			        		<p>No Result Found</p>
+			        	<%end%>
+			        </div>
+
+			        <div id="search_res" class="col-md-10" style="display:none;">
+			        	<%= render "users/search_filter" %>
+			        </div>	
+			       <p class="text-center"><%= will_paginate @school %></p>
+			    </div>
+			</div><!-- row end -->	
+		</div>
+	</div>
+
+<%=render "layouts/footer"%>
+
+<%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "bootstrap.min" %>
+<%= javascript_include_tag "jquery.stellar" %>
+<%= javascript_include_tag "jquery.appear" %>
+<%= javascript_include_tag "jquery.nicescroll.min" %>
+<%= javascript_include_tag "script" %>

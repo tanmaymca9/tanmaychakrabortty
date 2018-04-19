@@ -1,0 +1,126 @@
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Post Requirements</title>
+<link rel="stylesheet" href="/assets/postjob.css">
+  <%= render "layouts/stylesheets"%>
+  <div class="bg-dark dk" id="wrap">
+    <%= render "schools/top"%>
+    <%= render :partial => "schools/left", :locals => { :active => 'Post' }%>
+    <div id="content">
+      <div class="outer">
+        <div class="inner bg-light lter">
+          <hr>                     
+          <h3>Post Requirements</h3>
+          <div class="container-fluid background">
+            <div class="loginBox">
+              <ul class="nav nav-pills nav-justified ">
+                <li class="active"><a data-toggle="pill" href="#home" class="mycls">Teacher Requirements</a></li>
+                <li><a data-toggle="pill" href="#menu1" class="mycls">Vendor Requirements</a></li>
+              </ul>
+              <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                  <%= form_for(@teacher_post, url: school_teacher_requirement_path) do |f| %>
+                    <div class="form-group">
+                      <label for="pwd">Qualification :</label>
+                      <%= f.text_field :qualification,class: "form-control",placeholder: "Qualification",autofocus:'true' %>
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Subject :</label>
+                      <%= f.text_field :subject,class: "form-control",placeholder: "Subject",autofocus:'true' %>
+                    </div>
+                    <div class="form-group">
+                      <label for="sel1">Levels :</label>
+                      <%= f.select :level, options_for_select(["Primary School", "Secondary School", "High School", "Degree","Professional"]),{include_blank: "Select Level"},{required: 'true',autofocus:'true',class:'form-control'}%>
+                    </div> 
+                    <div class="form-group">
+                      <label for="pwd">Experience :</label>
+                      <%= f.text_field :experience,class: "form-control",placeholder: "Experience",autofocus:'true'%>
+                    </div>
+                    <div class="form-group">
+                      <label for="pwd">Salary:</label>
+                      <%= f.text_field :annual_salary,class: "form-control",placeholder: "Salary",autofocus:'true'%>
+                    </div>
+                    <div class="form-group">
+                      <label for="pwd">Job Type:</label>
+                      <%= f.radio_button :job_type, true%>Part Time
+                      <%= f.radio_button :job_type, false%>Full Time
+                    </div>
+                    <div class="text-center">
+                      <%= f.submit "Submit",class: "btn btn-success"%>
+                      <button type="button" class="btn btn-danger">Cancel</button>
+                    </div>
+                  <%end%>
+                </div>
+                <div id="menu1" class="tab-pane fade">
+                  <%= form_for(@vendor_post, url: school_vendor_requirement_path) do |f| %>
+                    <div class="form-group">
+                      <label for="email">Name :</label>
+                      <%= f.text_field :name,class: "form-control",placeholder: "Tendor Name",autofocus:'true'%>
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Location :</label>
+                      <%= f.text_field :location,class: "form-control",placeholder: "Address",autofocus:'true'%>
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Article :</label>
+                     <%= f.text_field :article,class: "form-control",placeholder: "Article",autofocus:'true' %>
+                    </div>
+                    <div class="form-group">
+                      <label for="pwd">Tendor Value :</label>
+                      <%= f.text_field :vendor_value,class: "form-control",placeholder: "Tendor_value",autofocus:'true' %>
+                    </div>
+                    <div class="form-group">
+                      <label for="pwd">Supplier Type:</label>
+                      <%= f.radio_button :supplier, true%>One Time Supplier
+                      <%= f.radio_button :supplier, false%>All Time Supplier
+                    </div>
+                    <div class="text-center">
+                      <%= f.submit "Submit",class: "btn btn-success"%>
+                      <button type="button" class="btn btn-danger">Cancel</button>
+                    </div>
+                  <%end%>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>      
+        </div>
+        <!-- /.inner -->
+      </div>
+      <!-- /.outer -->
+    </div>
+    <!-- /#content -->
+  </div>
+  <!-- /#wrap -->
+  <footer class="Footer bg-dark dker">
+      <p>2017 &copy; Tabashi Technology Private Limited</p>
+  </footer>
+  <!-- /#footer -->
+<!-- #helpModal -->
+<div id="helpModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<%= render "layouts/javascripts"%>

@@ -1,0 +1,370 @@
+<title>School Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%= render "layouts/stylesheets"%>
+
+<div class="bg-dark dk" id="wrap">
+  <%= render "schools/top"%>
+  <%= render :partial => "schools/left", :locals => { :active => 'Dashboard' }%>
+  <div id="content">
+    <div class="outer">
+      <div class="inner bg-light lter">
+        <div>
+          <h3>Applications Received</h3>
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <div class="col-md-3 col-sm-6">
+                <% if current_user.active? %>
+                  <%= link_to  school_teachers_path(current_user) do %>
+                    <div class="counting-box" id="encounter">
+                      <%= image_tag ('tlogo.png')%>
+                      <h4 class="count-this"><%= @teachers_count %></h4>
+                      <p>FROM TEACHER</p>
+                    </div>
+                  <%end%>
+                <%else%>
+                  <a href="#applyModal" data-toggle="modal">
+                    <div class="counting-box" id="encounter">
+                      <%= image_tag ('tlogo.png')%>
+                      <h4 class="count-this"><%= @teachers_count %></h4>
+                      <p>FROM TEACHER</p>
+                    </div>
+                  </a>
+                <%end%>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <% if current_user.active? %>
+                 <%= link_to  school_students_path(current_user) do %>
+                    <div class="counting-box" id="battles">
+                      <%= image_tag ('slogo.png')%>
+                      <h4 class="count-this"><%=@students_count%></h4>
+                      <p>FROM STUDENTS</p>
+                    </div>
+                  <%end%>
+                </a>
+                <%else%>
+                  <a href="#applyModal" data-toggle="modal">
+                    <div class="counting-box" id="encounter">
+                      <%= image_tag ('slogo.png')%>
+                      <h4 class="count-this"><%=@students_count%></h4>
+                      <p>FROM STUDENTS</p>
+                    </div>
+                  </a>
+                <%end%>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <% if current_user.active? %>
+                  <%= link_to  school_vendors_path(current_user) do %>
+                    <div class="counting-box" id="locations">
+                      <%= image_tag ('vlogo.png')%>
+                      <h4 class="count-this"><%=@vendors_count%></h4>
+                      <p>FROM VENDORS</p>
+                    </div>
+                  <%end%>
+                <%else%>
+                  <a href="#applyModal" data-toggle="modal">
+                    <div class="counting-box" id="encounter">
+                      <%= image_tag ('vlogo.png')%>
+                      <h4 class="count-this"><%=@vendors_count%></h4>
+                      <p>FROM VENDORS</p>
+                    </div>
+                  </a>
+                <%end%>
+              </div>
+              <div class="col-md-3 col-sm-6">
+              <% if current_user.active? %>
+                <a href="">
+                  <div class="counting-box" id="locations">
+                    <%= image_tag ('mlogo.png')%>
+                    <h4 class="count-this">312</h4>
+                    <p>TOTAL EARNING</p>
+                  </div>
+                </a>
+                <%else%>
+                  <a href="#applyModal" data-toggle="modal">
+                    <div class="counting-box" id="encounter">
+                      <%= image_tag ('mlogo.png')%>
+                      <h4 class="count-this">312</h4>
+                      <p>TOTAL EARNING</p>
+                    </div>
+                  </a>
+                <%end%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <% if current_user.active? %>
+                <%if current_user.overviews.present?%>
+                  <%= link_to  school_update_overview_path(current_user) do %>
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                      <div class="quick-btn">
+                        <i class="fa fa-bolt fa-2x"></i>
+                        <span>OVERVIEW</span>
+                        <span class="label label-default"></span>
+                      </div>
+                    </div>
+                  <%end%>
+                <%else%>
+                  <%= link_to  school_overview_path(current_user) do %>
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                      <div class="quick-btn">
+                        <i class="fa fa-bolt fa-2x"></i>
+                        <span>OVERVIEW</span>
+                        <span class="label label-default"></span>
+                      </div>
+                    </div>
+                  <%end%>
+                <%end%>
+              <%else%>
+                  <a href="#applyModal" data-toggle="modal">
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-bolt fa-2x"></i>
+                      <span>OVERVIEW</span>
+                      <span class="label label-default"></span>
+                    </div>
+                  </div>
+                  </a>
+              <%end%>
+
+              <% if current_user.active? %>
+                <%= link_to  school_campus_path(current_user) do %>
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-external-link fa-2x"></i>
+                      <span>INFRASTRUCTURE</span>
+                      <span class="label btn-metis-2"><%= @campus_count %></span>
+                    </div>
+                  </div>
+                <%end%>
+              <%else%>
+                <a href="#applyModal" data-toggle="modal">
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-external-link fa-2x"></i>
+                      <span>INFRASTRUCTURE</span>
+                      <span class="label btn-metis-2"><%= @campus_count %></span>
+                    </div>
+                  </div>
+                </a>
+              <%end%>
+
+              <% if current_user.active? %>
+                <%= link_to  school_courses_path(current_user) do %>
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-check fa-2x"></i>
+                      <span>COURSES & FEE <br\> STRUCTURE</span>
+                      <span class="label label-danger"><%= @course_count %></span>
+                    </div>
+                  </div>
+                <%end%>
+              <%else%>
+                <a href="#applyModal" data-toggle="modal">
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-check fa-2x"></i>
+                      <span>COURSES & FEE <br\> STRUCTURE</span>
+                      <span class="label label-danger"><%= @course_count %></span>
+                    </div>
+                  </div>
+                </a>
+              <%end%>
+
+              <% if current_user.active? %>
+                <%= link_to  school_cutoffs_path(current_user) do %>
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-signal fa-2x"></i>
+                      <span>ADMISSION</span>
+                      <span class="label label-warning"><%= @cutoff_count %></span>
+                    </div>
+                  </div>
+                <%end%>
+              <%else%>
+                <a href="#applyModal" data-toggle="modal">
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-signal fa-2x"></i>
+                      <span>ADMISSION</span>
+                      <span class="label label-warning"><%= @cutoff_count %></span>
+                    </div>
+                  </div>
+                </a>
+              <%end%>
+
+              <% if current_user.active? %>
+                <%= link_to  school_scholarships_path(current_user) do %>
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-building-o fa-2x"></i>
+                      <span>SCHOLARSHIP</span>
+                      <span class="label btn-metis-4"><%= @scholar_count %></span>
+                    </div>
+                  </div>
+                <%end%>
+              <%else%>
+                <a href="#applyModal" data-toggle="modal">
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-building-o fa-2x"></i>
+                      <span>SCHOLARSHIP</span>
+                      <span class="label btn-metis-4"><%= @scholar_count %></span>
+                    </div>
+                  </div>
+                </a>
+              <%end%>
+              
+              <% if current_user.active? %>
+                <%= link_to  school_placements_path(current_user) do %>
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-envelope fa-2x"></i>
+                      <span>PLACEMENT</span>
+                      <span class="label label-success"><%= @placement_count %></span>
+                    </div>
+                  </div>
+                <%end%>
+              <%else%>
+                <a href="#applyModal" data-toggle="modal">
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-envelope fa-2x"></i>
+                      <span>PLACEMENT</span>
+                      <span class="label label-success"><%= @placement_count %></span>
+                    </div>
+                  </div>
+                </a>
+              <%end%>
+
+              <% if current_user.active? %>
+                <%= link_to  school_schoolinformations_path(current_user) do %>
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-lemon-o fa-2x"></i>
+                      <span>NEWS</span>
+                      <span class="label btn-metis-4"><%= @news_count %></span>
+                    </div>
+                  </div>
+                <%end%>
+              <%else%>
+                <a href="#applyModal" data-toggle="modal">
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-lemon-o fa-2x"></i>
+                      <span>NEWS</span>
+                      <span class="label btn-metis-4"><%= @news_count %></span>
+                    </div>
+                  </div>
+                </a>
+              <%end%>
+
+               <% if current_user.active? %>
+                <%= link_to  school_schoolpictures_path(current_user) do %>
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-glass fa-2x"></i>
+                      <span>PICTURES</span>
+                      <span class="label btn-metis-3"><%= @picture_count %></span>
+                    </div>
+                  </div>
+                <%end%>
+              <%else%>
+                <a href="#applyModal" data-toggle="modal">
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-glass fa-2x"></i>
+                      <span>PICTURES</span>
+                      <span class="label btn-metis-3"><%= @picture_count %></span>
+                    </div>
+                  </div>
+                </a>
+              <%end%>
+              
+              <% if current_user.active? %>
+                <%= link_to  school_schoolvideos_path(current_user) do %>
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-glass fa-2x"></i>
+                      <span>VIDEOS</span>
+                      <span class="label btn-metis-3"><%= @video_count %></span>
+                    </div>
+                  </div>
+                <%end%>
+              <%else%>
+                <a href="#applyModal" data-toggle="modal">
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-glass fa-2x"></i>
+                      <span>VIDEOS</span>
+                      <span class="label btn-metis-3"><%= @video_count %></span>
+                    </div>
+                  </div>
+                </a>
+              <%end%>
+            </div>
+          </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="Footer bg-dark dker">
+    <p>2017 &copy; Tabashi Technology Private Limited</p>
+</footer>
+
+<div id="helpModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+          <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+              et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+              culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<%= render "layouts/javascripts"%>
+<!-- <script type="text/javascript">
+  $(document).ready(function(){
+    $(".btn").click(function(){
+      $.ajax({
+        type : "get",
+        url : "/search/get_dat",
+        data : {
+          "city_id" : $(".city_select").val(),
+          "role_id" : $(".role_select").val()
+        }
+        
+      })
+    });
+  });
+</script> -->
+
+<div id="applyModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+              <p>
+                  Hi <%=current_user.name%>, You Acount Is Deactivated, Please Contact to Admin.
+              </p>
+          </div>
+        </div>
+    </div>
+</div>

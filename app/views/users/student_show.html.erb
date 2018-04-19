@@ -1,0 +1,144 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>student</title>
+	
+<%= stylesheet_link_tag  "bootstrap.min" %>
+<%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+<%= stylesheet_link_tag  "student" %>
+<%= stylesheet_link_tag  "style" %>
+
+<div class="container-fluid bg">
+	<div class="stuB">
+	<%=render "layouts/header"%>
+		<div class="stuBbanner">
+	`		<div class="logo">
+				<% if @user.profile_image.present? %>
+				<%= image_tag @user.profile_image,class: "img-circle stygfh", width: "110", height: "110", border: "0", alt: "profile image" %>
+				<%else%>
+				<%= image_tag "user.png",class: "img-circle stygfh", width: "110", height: "110", border: "0", alt: "profile image" %>
+				<%end%>
+			</div>
+		</div>
+		<div class="row trt">
+			<h3><%= @user.name if @user.present?%></h3>
+			<h4 class="H4cuStom"><%= @city.name if @city.present?%></h4>
+		</div>
+		<div class="row darf">
+			<div class="col-sm-12">
+				<div class="col-sm-6 col-xs-12 col-lg-6 colrd">
+					<div class="colB">
+						<ul class="list-group">
+							<li class="list-group-item custlist"><b>Email : </b> <%= @user.email %></li>
+							<li class="list-group-item custlist"><b>Phone : </b><%= @user.phone_no %></li>
+							<li class="list-group-item custlist"><b>Class : </b><%= @user.qualification if present? %></li>
+							<% if @user.gender == true%>
+							<li class="list-group-item custlist"><b>Gender : </b>Male</li>
+							<% elsif @user.gender == false%>
+							<li class="list-group-item custlist"><b>Gender : </b>Female</li>
+							<%else%>
+							<li class="list-group-item custlist"><b>Gender : </b>Not Mentioned</li>
+							<%end%>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-6 col-xs-12 col-lg-6 colrd">
+					<div class="colB">
+						<ul class="list-group">
+							<li class="list-group-item custlist"><b>City : </b><%if @user.city_id.present?%><%= @city.name %><%else%>Not Mentioned<%end%></li>
+							<li class="list-group-item custlist"><b>State : </b><% if @user.state_id.present? %><%= @state.name %><%else%>Not Mentioned<%end%></li>
+							<li class="list-group-item custlist"><b>Country : </b><% if @user.country_id.present? %><%= @country.name %><%else%>Not Mentioned<%end%></li>
+							<li class="list-group-item custlist"><b>Address : </b><%= @user.address if @user.address.present? %></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<% if @user.role == "teacher"%>
+  <div class="container">
+    <div class="row RWObtcust">
+      <h4>Slots</h4>
+      <div class="table-responsive">          
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Duration</th>
+              <th>Select</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <% @slots.each do |slot|%>
+                <td><%=slot.id%></td>
+                <td><%=slot.name%></td>
+                <td><%=slot.date%></td>
+                <td><%=slot.time%></td>
+                <td><%=slot.duration%></td>
+                <td><button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#student_model">Apply</button></td>
+              <%end%>
+            </tr>
+          </tbody>
+        </table>
+      </div> 	
+    </div>
+    <div class="row RWObtcust">
+    	<h4>Demo Videos</h4>
+      <% @videos.each do |video|%>
+      	<div class="col-md-4">
+          <h3><%= video.title%></h3>
+          <iframe width="100%" height="150" src="<%= video.video%>"></iframe>
+          <p class="taxtjust"><%= video.description%></p>
+        </div>
+      <%end%>			
+    </div>
+  </div>
+<%end%>	
+
+<div id="student_model" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <form class="log">
+            <div class="form-group">
+              <label for="text">Name :</label>
+              <input type="text" class="form-control"  name="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email :</label>
+              <input type="email" class="form-control" name="email" placeholder="email">
+            </div>
+            <div class="form-group">
+              <label for="text">Phone Number :</label>
+              <input type="text" class="form-control" id="eamil" name="emi" placeholder="text">
+            </div>
+           
+        
+            <div class="text-center">
+            <button type="button" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-danger">Cancel</button>
+          </div>
+          </form>
+      </div>
+     
+    </div>
+
+  </div>
+</div>
+
+<%=render "layouts/footer"%>
+<%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "bootstrap.min" %>
+<%= javascript_include_tag "jquery.stellar" %>
+<%= javascript_include_tag "jquery.appear" %>
+<%= javascript_include_tag "jquery.nicescroll.min" %>
+<%= javascript_include_tag "script" %>

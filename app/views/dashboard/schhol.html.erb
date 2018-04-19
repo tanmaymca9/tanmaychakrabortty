@@ -1,0 +1,433 @@
+
+
+
+
+
+    <meta charset="UTF-8">
+    <!--IE Compatibility modes-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Mobile first-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Dashboard</title>
+    
+    
+    <!-- Bootstrap -->
+   <!--  <link rel="stylesheet" href="css1/bootstrap.css">
+     <link rel="stylesheet" href="css1/styles.css"> -->
+    
+    
+    <!-- Font Awesome -->
+    <!-- <link rel="stylesheet" href="css1/font-awesome.css"> -->
+    
+    <!-- Metis core stylesheet -->
+    <!-- <link rel="stylesheet" href="css1/main.css"> -->
+
+    
+    <!-- metisMenu stylesheet -->
+    <!-- <link rel="stylesheet" href="css11/metisMenu.css"> -->
+    
+    <!-- onoffcanvas stylesheet -->
+    <!-- <link rel="stylesheet" href="css1/onoffcanvas.css"> -->
+    
+    <!-- animate.css stylesheet -->
+    <!-- <link rel="stylesheet" href="css1/animate.css"> -->
+    <!-- <link rel="stylesheet" href="css1/style-switcher.css"> -->
+
+	<%= stylesheet_link_tag  "bootstrap" %>
+	<%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+	<%= stylesheet_link_tag  "styles" %>
+	<%= stylesheet_link_tag  "main" %>
+	<%= stylesheet_link_tag  "metisMenu" %>
+	<%= stylesheet_link_tag  "onoffcanvas" %>
+	<%= stylesheet_link_tag  "animate" %>
+	<%= stylesheet_link_tag  "style-switcher" %>
+
+
+            <div class="bg-dark dk" id="wrap">
+                <div id="top">
+                    <!-- .navbar -->
+                    <nav class="navbar navbar-inverse navbar-static-top">
+                        <div class="container-fluid">
+                    
+                    
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <header class="navbar-header">
+                    
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a href="index.html" class="navbar-brand"><img src="/assets/logo.png" alt=""></a>
+                    
+                            </header>
+                    
+                    <div class="topnav">
+                               
+                                <div class="btn-group">
+                                    
+                                    <a data-toggle="modal" data-original-title="Help" data-placement="bottom"
+                                       class="btn btn-default btn-sm"
+                                       href="#helpModal">
+                                        <i class="fa fa-question"></i>
+                                    </a>
+                                </div>
+                                <div class="btn-group">
+
+                              <%= link_to "",destroy_user_session_path,class: "btn btn-metis-1 btn-sm fa fa-power-off" %>
+                                    <!-- <a href="login.html" data-toggle="tooltip" data-original-title="Logout" data-placement="bottom"
+                                       class="btn btn-metis-1 btn-sm">
+                                        <i class="fa fa-power-off"></i> -->
+                                    </a>
+                                </div>
+                                <div class="btn-group">
+                                    <a data-placement="bottom" data-original-title="Show / Hide Left" data-toggle="tooltip"
+                                       class="btn btn-primary btn-sm toggle-left" id="menu-toggle">
+                                        <i class="fa fa-bars"></i>
+                                    </a>
+                                    
+                                </div>
+                    
+                            </div>
+                    
+                    
+                    
+                    
+                            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    
+                                <!-- .nav -->
+                                
+                                <!-- /.nav -->
+                            </div>
+                        </div>
+                        <!-- /.container-fluid -->
+                    </nav>
+                    <!-- /.navbar -->
+                        <header class="head">
+                                <div class="search-bar">
+                                   
+                                </div>
+                                <!-- /.search-bar -->
+                            <div class="main-bar">
+                                <h3>
+              <i class="fa fa-dashboard"></i>&nbsp;
+            Dashboard
+          </h3>
+                            </div>
+                            <!-- /.main-bar -->
+                        </header>
+                        <!-- /.head -->
+                </div>
+                <!-- /#top -->
+                    <div id="left">
+                        <div class="media user-media bg-dark dker">
+                            <div class="user-media-toggleHover">
+                                <span class="fa fa-user"></span>
+                            </div>
+                            <div class="user-wrapper bg-dark">
+                                <a class="user-link" href="">
+                                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="/assets/user.gif">
+                                    <span class="label label-danger user-label">16</span>
+                                </a>
+                        
+                                <div class="media-body">
+                                    <h5 class="media-heading"><%= current_user.name%></h5>
+                                    <ul class="list-unstyled user-info">
+                                        <li><%= current_user.role%></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- #menu -->
+                        <ul id="menu" class="bg-blue dker">
+                                  
+                                <li class="nav-divider"></li>  
+                                  <li class="active">
+                                    <a href="dashboard.html">
+                                      <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
+                                    </a>
+                                  </li>
+                                  <li class="">
+                                    <a href="javascript:;">
+                                      <i class="fa fa-building "></i>
+                                      <span class="link-title">Layouts</span>
+                                      <span class="fa arrow"></span>
+                                    </a>
+                                    <ul class="collapse">
+                                      <li>
+                                        <a href="overview.html">
+                                          <i class="fa fa-angle-right"></i>&nbsp;Overview</a>
+                                      </li>
+                                      <li>
+                                        <a href="courses.html">
+                                          <i class="fa fa-angle-right"></i>&nbsp; Courses</a>
+                                      </li>
+                                      <li>
+                                        <a href="scholar.html">
+                                          <i class="fa fa-angle-right"></i>&nbsp; Scholarship</a>
+                                      </li>
+                                      <li>
+                                        <a href="placement.html">
+                                          <i class="fa fa-angle-right"></i>&nbsp; Placement</a>
+                                      </li>
+                                      <li>
+                                        <a href="school_cutoff.html">
+                                          <i class="fa fa-angle-right"></i>&nbsp; Cutoff</a>
+                                      </li>
+                                      <li>
+                                        <a href="school_campus.html">
+                                          <i class="fa fa-angle-right"></i>&nbsp; Campus</a>
+                                      </li>
+                                      <li>
+                                        <a href="school_news.html">
+                                          <i class="fa fa-angle-right"></i>&nbsp; News</a>
+                                      </li>
+                                      <li>
+                                        <a href="school_pic.html">
+                                          <i class="fa fa-angle-right"></i>&nbsp; Pictures</a>
+                                      </li>
+                                      <li>
+                                        <a href="school_video.html">
+                                          <i class="fa fa-angle-right"></i>&nbsp; Videos</a>
+                                      </li>
+                                      
+                                      
+                                    </ul>
+                                  </li>
+                                  <li class="">
+                                    <a href="teachers_list.html">
+                                      <i class="fa fa-tasks"></i>
+                                      <span class="link-title">Teachers</span>
+                                    
+                                    </a>
+                                   
+                                  </li>
+                                  <li class="">
+                                    <a href="student_list.html">
+                                      <i class="fa fa-pencil"></i>
+                                      <span class="link-title">
+                                    School
+                        	  </span>
+                                      
+                                    </a>
+                                    
+                                  </li>
+                                  <li>
+                                    <a href="vendor_list.html">
+                                      <i class="fa fa-table"></i>
+                                      <span class="link-title">Vendors</span>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="total_earn.html">
+                                      <i class="fa fa-font"></i>
+                                      <span class="link-title">
+                                    Total Earning
+                                  </span>  </a>
+                                  </li>
+                                  
+                                  
+                                  
+                                  <li class="nav-divider"></li>
+                                  
+                                 
+                                </ul>
+                        <!-- /#menu -->
+                    </div>
+                    <!-- /#left -->
+                <div id="content">
+                    <div class="outer">
+                        <div class="inner bg-light lter">
+                         
+
+      <div>
+      <h3>Application Received</h3>
+      
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="col-md-3 col-sm-6">
+            <a href="teachers_list.html">
+        <div class="counting-box" id="encounter">
+          <img src="https://image.flaticon.com/icons/svg/188/188999.svg" alt="Image 1">
+          <h4 class="count-this">1582</h4>
+          <p>TEACHER</p>
+        </div>
+      </a>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <a href="student_list.html">
+        <div class="counting-box" id="battles">
+          <img src="https://image.flaticon.com/icons/svg/189/189015.svg" alt="Image 2">
+          <h4 class="count-this">57</h4>
+          <p>STUDENTS</p>
+        </div>
+      </a>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <a href="vendor_list.html">
+      <div class="counting-box" id="locations">
+          <img src="https://image.flaticon.com/icons/svg/188/188935.svg" alt="Image 13">
+          <h4 class="count-this">312</h4>
+          <p>VENDORS</p>
+        </div>
+      </a>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <a href="total_earn.html">
+        <div class="counting-box" id="locations">
+          <img src="https://image.flaticon.com/icons/svg/188/188935.svg" alt="Image 13">
+          <h4 class="count-this">312</h4>
+          <p>TOTAL EARNING</p>
+        </div>
+      </a>
+      </div>
+      </div>
+    </div>
+    </div>
+
+<hr>
+
+<div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="col-md-2 col-sm-4 col-xs-6">
+
+    <a class="quick-btn" href="#">
+	<i class="fa fa-bolt fa-2x"></i>
+	<span>OVERVIEW</span>
+	<span class="label label-default">2</span>
+    </a>
+  </div>
+   <div class="col-md-2 col-sm-4 col-xs-6">
+    <a class="quick-btn" href="#">
+	<i class="fa fa-check fa-2x"></i>
+	<span>COURSES</span>
+	<span class="label label-danger">2</span>
+    </a>
+    </div>
+   <div class="col-md-2 col-sm-4 col-xs-6">
+    <a class="quick-btn" href="#">
+	<i class="fa fa-building-o fa-2x"></i>
+	<span>SCHOLARSHIP</span>
+  <span class="label btn-metis-4">2.71828</span>
+    </a>
+    </div>
+   <div class="col-md-2 col-sm-4 col-xs-6">
+    <a class="quick-btn" href="#">
+	<i class="fa fa-envelope fa-2x"></i>
+	<span>PLACEMENT</span>
+	<span class="label label-success">-456</span>
+    </a>
+    </div>
+   <div class="col-md-2 col-sm-4 col-xs-6">
+    <a class="quick-btn" href="#">
+	<i class="fa fa-signal fa-2x"></i>
+	<span>CUTOFF</span>
+	<span class="label label-warning">+25</span>
+    </a>
+    </div>
+   <div class="col-md-2 col-sm-4 col-xs-6">
+    <a class="quick-btn" href="#">
+	<i class="fa fa-external-link fa-2x"></i>
+	<span>CAMPUS</span>
+	<span class="label btn-metis-2">3.14159265</span>
+    </a>
+    </div>
+   <div class="col-md-2 col-sm-4 col-xs-6">
+    <a class="quick-btn" href="#">
+	<i class="fa fa-lemon-o fa-2x"></i>
+	<span>NEWS</span>
+	<span class="label btn-metis-4">2.71828</span>
+    </a>
+    </div>
+   <div class="col-md-2 col-sm-4 col-xs-6">
+    <a class="quick-btn" href="#">
+	<i class="fa fa-glass fa-2x"></i>
+	<span>PICTURES</span>
+	<span class="label btn-metis-3">1.618</span>
+    </a>
+</div>
+<div class="col-md-2 col-sm-4 col-xs-6">
+    <a class="quick-btn" href="#">
+  <i class="fa fa-glass fa-2x"></i>
+  <span>VIDEOS</span>
+  <span class="label btn-metis-3">1.618</span>
+    </a>
+</div>
+</div>
+</div>
+
+<hr>
+
+
+                        </div>
+                        <!-- /.inner -->
+                    </div>
+                    <!-- /.outer -->
+                </div>
+                <!-- /#content -->
+
+                   
+            </div>
+            <!-- /#wrap -->
+            <footer class="Footer bg-dark dker">
+                <p>2017 &copy; Tabashi Technology Private Limited</p>
+            </footer>
+            <!-- /#footer -->
+            <!-- #helpModal -->
+            <div id="helpModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+            <!-- /#helpModal -->
+            <!--jQuery -->
+            <!-- <script src="js1/jquery.js"></script> -->
+
+                    
+            <!--Bootstrap -->
+            <!-- <script src="js1/bootstrap.js"></script> -->
+            <!-- MetisMenu -->
+            <!-- <script src="js1/metisMenu.js"></script> -->
+            <!-- onoffcanvas -->
+            <!-- <script src="js1/onoffcanvas.js"></script> -->
+            <!-- Screenfull -->
+           
+
+            <!-- Metis core scripts -->
+            <!-- <script src="js1/core.js"></script> -->
+            <!-- Metis demo scripts -->
+            <!-- <script src="js1/app.js"></script> -->
+            <!-- <script src="js1/style-switcher.js"></script> -->
+             <!-- <script src="js1/counter.js"></script> -->
+              
+		 
+		<%= javascript_include_tag "jquery" %>
+		<%= javascript_include_tag "bootstrap" %>
+		<%= javascript_include_tag "metisMenu" %>
+		<%= javascript_include_tag "onoffcanvas" %>
+		<%= javascript_include_tag "core" %>
+		<%= javascript_include_tag "app" %>
+		<%= javascript_include_tag "style-switcher" %>
+		<%= javascript_include_tag "counter" %>

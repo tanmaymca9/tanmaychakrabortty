@@ -1,0 +1,83 @@
+<title>Current Requirements</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%= render "layouts/stylesheets"%>
+
+<style>
+.teAChbox {
+  border: 5px solid;
+  padding: 0 10px;
+}
+.col-md-6.col6cust {
+  margin: 5px 0;
+}
+.Aplybtn {
+  text-align: right;
+}
+
+</style>
+
+<%= render "vendors/top"%>
+<%= render :partial => "vendors/left", :locals => { :active => 'Apply School' }%>
+<div id="content">
+    <div class="outer">
+        <div class="inner bg-light lter">
+            <div class="container-fluid background">
+                <div class="loginBox">
+                    <div class="row">
+                        <% if @vendors.present? %>
+                            <% @vendors.each do |vendor|%>
+                              	<div class="col-md-6 col6cust">
+                                    <div class="teAChbox">
+                                        <h4> Hi,We Are Looking For Vendor </h4>
+                                        <h5>Location : <%=vendor.location%></h5>
+                                        <h5>Article : <%=vendor.article%></h5>
+                                        <h5>Tendor Value : <%=vendor.vendor_value%></h5>
+                                        <h5><% if vendor.supplier?%>
+                                            Supplier : One Time Supplier
+                                            <%else%>Supplier : All Time Supplier<%end%></h5>
+                                        <div class="Aplybtn">
+                                            <%@id = AppliedSchool.find_by_user_id_and_school_id(current_user, vendor)%>
+                                            <%if @id.present?%>
+                                                <button class="btn btn-primary TxtceNtr" data-toggle="modal" href="#applyModal<%=vendor.id%>">Apply Now </button>
+                                            <%else%>
+                                                <%=link_to "Apply",vendor_apply_school_path(vendor),class: "btn btn-primary"%>
+                                            <%end%>
+                                        </div>	
+                                    </div>
+                                </div>
+                                <div id="applyModal<%=vendor.id%>" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                              <h4 class="modal-title">School</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                              <p>
+                                                  Hi <%=current_user.name%>, You already applied for this Vendor
+                                              </p>
+                                            </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            <%end%>
+                        <% else %>
+                            <div class="col-md-6 col6cust">
+                                <div class="teAChbox">
+                                    Hi <%=current_user.name%>, Sorry Currently We no Need Vendors!
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+   
+
+<footer class="Footer bg-dark dker">
+    <p>2017 &copy; Tabashi Technology Private Limited</p>
+</footer>
+
+<%= render "layouts/javascripts"%>

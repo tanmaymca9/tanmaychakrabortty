@@ -1,0 +1,140 @@
+<title>EDUORACLE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<%= stylesheet_link_tag  "bootstrap.min" %>
+<%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+<%= stylesheet_link_tag  "style" %>
+
+<script type="text/javascript">
+$(document).ready(function() {    
+		var id = '#dialog';
+	
+		//Get the screen height and width
+		var maskHeight = $(document).height();
+		var maskWidth = $(window).width();
+	
+		//Set heigth and width to mask to fill up the whole screen
+		$('#mask').css({'width':maskWidth,'height':maskHeight});
+		
+		//transition effect		
+		$('#mask').fadeIn(500);	
+		$('#mask').fadeTo("slow",0.9);	
+	
+		//Get the window height and width
+		var winH = $(window).height();
+		var winW = $(window).width();
+              
+		//Set the popup window to center
+		$(id).css('top',  winH/2-$(id).height()/2);
+		$(id).css('left', winW/2-$(id).width()/2);
+	
+		//transition effect
+		$(id).fadeIn(2000); 	
+	
+	//if close button is clicked
+	$('.window .close').click(function (e) {
+		//Cancel the link behavior
+		e.preventDefault();
+		
+		$('#mask').hide();
+		$('.window').hide();
+	});		
+	
+	//if mask is clicked
+	$('#mask').click(function () {
+		$(this).hide();
+		$('.window').hide();
+	});		
+	
+});
+</script>
+
+<style type="text/css">
+	.img-respomsive.Companylg.stdImG{
+		width: 50px;
+	}
+</style>
+
+<%=render "layouts/header"%>
+
+<body data-spy="scroll" data-target=".main-nav">
+	<section class="home" id="home" data-stellar-background-ratio="0.4">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="st-home-unit">
+						<h1 class="edutetitle">Discover The Best</h1>
+						<form class="form-wrapper cf">
+							<%= form_tag users_search_path(:controller => 'users', :action => 'search',:search => params[:search]), method: :get do %>
+							<% @city.each do |city| %>
+							
+								<%= select("user", "city", city.name.titleize,{:prompt => 'Select Location'} ,{class: "fa fa-map-marker"}) %>
+								<%end%>
+								<%= select("user", "role", @role.map{|role| role.titleize},{:prompt => 'I am ..'},class: "fa") %>
+
+								<%= select("user", "search_role", @role.map{|role| role.titleize},{:prompt => 'Searching for '},class: "fa") %>
+							<%= submit_tag 'Search', class: "btn btn-primary seARCHbtn" %>
+							<% end %>
+						</form>		
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="container-fluid scrolltext">
+		<div class="row scrollcontent">
+			<marquee  direction="left" behavior="scroll">
+			<!-- <p class="marquetxt">Powered By Tabashi Technology Pvt Ltd. All right Reserved 2018......</p>  -->
+			</marquee>
+		</div>
+	</div>
+
+ 	<%= render 'users/connectedu'%>
+	<%= render 'users/schools'%>
+	<%= render 'users/teachers'%>
+	<%= render 'users/students'%>
+	<%= render 'users/vendors'%>
+	<%= render 'users/contact'%>
+	<%= render "layouts/footer"%>
+
+	<div id="myModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog modal-lg">
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-body">
+	        <p>Some text in the modal.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</body>
+	  
+<%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "bootstrap.min" %>
+<%= javascript_include_tag "jquery.stellar" %>
+<%= javascript_include_tag "jquery.appear" %>
+<%= javascript_include_tag "jquery.nicescroll.min" %>
+<%= javascript_include_tag "script" %>
+   
+
+<script type="text/javascript">
+	$(window).load(function(){        
+	$('#myModal').modal('show');
+	}); 
+</script>
+
+ <script type="text/javascript">
+ 	window.onload = function() {
+  var startPos;
+  var geoSuccess = function(position) {
+    startPos = position;
+    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+  };
+  navigator.geolocation.getCurrentPosition(geoSuccess);
+};
+</script> 

@@ -1,0 +1,50 @@
+<div id="pictures">
+	<span class="overview">Images of <%= @college.name %></span>
+	<hr>
+	<div class="row imgVid">
+		<% if @gallery.present? %>
+			<% @gallery.each do |gallery|%>
+				<div class="col-md-3">
+				  	<div class="thumbnail">
+						<%if gallery.picture.present?%>
+						  	<%= image_tag gallery.picture,style: "width:100%"%>
+						<%else%>
+						  	<%= image_tag('building.jpg',style: "width:100%")%>
+						<%end%>
+					  	<div class="caption">
+							<p><%= gallery.title%></p>
+					 	</div>
+				  	</div>
+				</div>
+			<%end%>
+		<%else%>
+			<p>No Images are present.....</p>
+		<%end%>
+	</div>
+	<span class="overview">Videos of <%= @college.name %></span>
+	<hr>
+	<div class="row galVid">
+		<div class="col-sm-12">
+			<% if @videos.present? %>
+				<% @videos.each do |video| %>
+					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 ">
+						<div class="vidBox">
+							<iframe width="100%" height="200" src="<%= video.video%>"></iframe>
+						</div>
+					</div>
+				<%end%>
+			<%else%>
+				<div class="col-sm-4 col-xs-12 col-md-4 ">
+					<div class="img-thumbnail">
+						<iframe width="100%" height="200" src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"></iframe>
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-12 col-md-4 ">
+					<div class="img-thumbnail">
+						<iframe width="100%" height="200" src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"></iframe>
+					</div>
+				</div>
+			<%end%>
+		</div>
+	</div>
+</div>

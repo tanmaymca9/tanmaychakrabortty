@@ -1,0 +1,32 @@
+	<div id="placement" >
+				<div class="container">
+					<div class="row overviewBox">
+						<h3 class="elihe"><%= @college.name %> Placements <%#= Time.current.year %></h3>
+						<p class="plaDes"><%= @college.description %></p>
+						<div class="tabOx">
+							<div class="table-responsive">          
+								<table class="table table-striped">
+									<thead>
+									  <tr>
+										<th>STREAM NAME</th>
+										<th>NO OF COMPANY VISITED</th>
+										<th>NUMBER OF STUDENTS PLACED</th>
+										<th>YEAR</th>
+									  </tr>
+									</thead>
+									<tbody>
+										<% @placement.each do |place|%>
+										  <tr>
+												<td><%= place.title%></td>
+												<td><%= place.companies_visited%></td>
+												<td><%= place.students_placed%></td>
+												<td><%= place.year%></td>
+										  </tr>
+									  <%end%>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>

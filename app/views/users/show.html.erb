@@ -1,0 +1,193 @@
+<title>School Showcase</title>
+
+<%= stylesheet_link_tag  "bootstrap.min" %>
+<%= stylesheet_link_tag  "font-awesome" %>
+<%= stylesheet_link_tag  "school_show" %>
+<%= stylesheet_link_tag  "header" %>
+
+<div class="container-fluid pgeBo">
+	<div style="background-image: url(<%= @college.cover_image %>)" >
+		<div class="bannerText text-center">
+			<div class="logo">
+				<%if @college.profile_image.present?%>
+					<%= image_tag @college.profile_image , class: "img-responsive scHbackimg"%>
+				<%else%>
+					<%= image_tag('logo.png',class: "img-responsive scHbackimg")%>
+				<%end%>
+			</div>
+			<h1 class="heading"><%= @college.name %></h1>
+			<p class="text">(A EduOracle group)</p><!-- PENDING -->
+			<p class="text"><%= @college.address %></p>
+			<p class="text"><%= @college.email %></p>
+		</div>
+	</div>
+	<div class="tabs">
+		<nav role='navigation' class="transformer-tabs">		
+			<ul>
+				<li><a href="#overview" class="active">OVERVIEW</a></li>
+				<li><a href="#campus">INFRASTRUCTURE</a></li>
+				<li><a href="#courses">COURSES</a></li>
+				<li><a href="#admission">ADMISSION</a></li>
+				<li><a href="#cutoff">ELIGIBILITY</a></li>
+				<li><a href="#scholarship">SCHOLARSHIP</a></li>
+				<li><a href="#placement">PLACEMENT</a></li>
+				<li><a href="#news">NEWS</a></li>
+				<li><a href="#pictures">GALLERY</a></li>
+			 </ul>
+		</nav>
+		
+		<%= render "users/overview"%>
+		<!--Infrastructure Tab-->
+		<%= render "users/infrastructure"%>
+		<!--Courses Tab-->
+		<%= render "users/course"%>
+		<!--ADMISSION TAB-->
+		<%= render "users/admission"%>
+		<!--CUTOFF TAB-->
+    	<%= render "users/cutoff"%>
+		<!--SCHOLERSHIP TAB-->
+		<%= render "users/scholarship"%>
+  		<!--PLACEMENT TAB-->
+		<%= render "users/placement"%>
+	  	<!--NEWS TAB-->
+		<%= render "users/news"%>
+	  	<!--PICTURE TAB-->
+		<%= render "users/picture"%>
+
+	</div>
+</div>
+<!-- model-->
+<div class="modal fade myModalpopup" role="dialog">
+	<div class="modal-dialog">
+	
+	  <!-- Modal content-->
+	  <div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<div class="row popR">
+				<div class="col-sm-12">
+					<div class="col-sm-6">
+						<h4 class="modal-title">B.Tech in Computer Science Engineering </h4>
+					</div>
+					 <div class="col-sm-6">
+						<h4 class="modal-titled"> 95 K / Year  </h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-body">
+			<div class="row popRd">
+				<div class="col-sm-12">
+					<div class="col-sm-6">
+						<h5 class="modal-bod">ELIGIBILITY</h5>
+						<p>10+2 with minimum50%</p>
+					</div>
+					 <div class="col-sm-6">
+						<h5 class="modal-bod">ENTERANCE EXAMS</h5>
+						<p>JEE mains(B.tech)</p>
+					</div>
+				</div>
+			</div>
+			<div class="row popRd">
+				<div class="col-sm-12">
+					<div class="col-sm-6">
+						<h5 class="modal-bod">AFFLIATED TO</h5>
+						<p>VTU</p>
+					</div>
+					 <div class="col-sm-6">
+						<h5 class="modal-bod">SCHOLARSHIP FACILITY</h5>
+						<p>Available</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-danger">Apply Now</button>
+		</div>
+	  </div>
+	  
+	</div>
+</div>
+
+<%= render "layouts/footer"%>
+
+<%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "bootstrap.min" %>
+	
+<script>
+	$(document).ready(function() {
+	    $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+	        e.preventDefault();
+	        $(this).siblings('a.active').removeClass("active");
+	        $(this).addClass("active");
+	        var index = $(this).index();
+	        $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+	        $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+	    });
+	
+</script>
+
+<script>
+		var Tabs = {
+
+  init: function() {
+    this.bindUIfunctions();
+    this.pageLoadCorrectTab();
+  },
+
+  bindUIfunctions: function() {
+
+    // Delegation
+    $(document)
+      .on("click", ".transformer-tabs a[href^='#']:not('.active')", function(event) {
+        Tabs.changeTab(this.hash);
+        event.preventDefault();
+      })
+      .on("click", ".transformer-tabs a.active", function(event) {
+        Tabs.toggleMobileMenu(event, this);
+        event.preventDefault();
+      });
+
+  },
+
+  changeTab: function(hash) {
+
+    var anchor = $("[href=" + hash + "]");
+    var div = $(hash);
+
+    // activate correct anchor (visually)
+    anchor.addClass("active").parent().siblings().find("a").removeClass("active");
+
+    // activate correct div (visually)
+    div.addClass("active").siblings().removeClass("active");
+
+    // update URL, no history addition
+    // You'd have this active in a real situation, but it causes issues in an <iframe> (like here on CodePen) in Firefox. So commenting out.
+    // window.history.replaceState("", "", hash);
+
+    // Close menu, in case mobile
+    anchor.closest("ul").removeClass("open");
+
+  },
+
+  // If the page has a hash on load, go to that tab
+  pageLoadCorrectTab: function() {
+    this.changeTab(document.location.hash);
+  },
+
+  toggleMobileMenu: function(event, el) {
+    $(el).closest("ul").toggleClass("open");
+  }
+
+}
+
+Tabs.init();
+</script>
+
+<script> 
+$(document).ready(function(){
+    $(".flipone").click(function(){
+        $(".panelone").slideToggle("fast");
+    });
+});
+</script>

@@ -1,0 +1,81 @@
+<div id="news" >
+	<div class="row conserti">
+		<div class="col-sm-12 consw">
+			<div class="col-sm-12 col-xs-12 col-md-9 col-lg-9 ort">
+				<div class="overviewBox">
+					<span class="overview"><%= @college.name %> News</span>
+					<hr>
+					<% if @news.present? %>
+						<div class="row">
+							<% @news.each do |news|%>
+								<div class="col-sm-12">
+									<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
+										<div class="building">
+											<%if news.image.present?%>
+												<%= image_tag news.image, class: "img-responsive schBuilding" %>
+											<%else%>
+												<%= image_tag("building.jpg",class: "img-responsive schBuilding")%>
+											<%end%>
+										</div>
+									</div>
+									<div class="col-sm-12 col-xs-12 col-md-9 col-lg-9">
+										<h4><b><%= news.title%></b></h4>
+										<p><%= news.description%></p>
+										<a href="<%= news.url%>" target="_blank"><%= news.url%></a>
+									</div>
+								</div>
+							<%end%>
+						</div>
+					<%else%>
+						<p>No News yet</p>
+					<%end%>
+					<hr>
+				</div>
+				
+				<div class="overviewBox">
+					<span class="overview">Contact Details of <%= @college.name%>,<%= @college.city.capitalize %></span>
+					<hr>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
+								<p class="contact">Contact No:&nbsp;<span class="Detastpd"> <%= @college.phone_no %></span></p>
+								<p class="contact"> Email ID: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="Detastpd"><%= @college.email %></span></p>
+								<p class="contact"> Website:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><a target="_blank" class="HanD" href="<%= @college.website%>"><%= @college.website%></a></span></p>
+								<p class="contact"> Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><%= @college.address %></span></p>
+							</div>
+							<div class="col-sm-12 col-xs-12 col-md-8 col-lg-8">
+								
+									<!-- <iframe width="100%" height="200" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJI1xm2AUVrjsR-fnwFcWCcMg&key=AIzaSyAVFg8wqguXEK6ouBrHpN5ED1JNIL9UAu8"></iframe> -->
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
+				<div class="vidBox">
+					<iframe width="100%" height="250"src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=1"></iframe> 
+				</div>
+				<div class="Reviewbox">
+					<div class="flipone">REVIEWS</div>
+					<div class="panelone">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
+							<li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
+							<li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
+							<li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
+							<li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
+							<li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
+							<li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
+							<li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
+							<li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
+							<li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
+							<li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
+							<li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
+						</ul> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

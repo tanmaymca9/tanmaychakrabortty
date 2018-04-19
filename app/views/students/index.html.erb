@@ -1,0 +1,144 @@
+
+<title>Student Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">    
+
+<%= render 'layouts/stylesheets'%>
+<div class="bg-dark dk" id="wrap">
+	<%= render 'students/top'%>
+	<%= render :partial => "students/left", :locals => { :active => 'Dashboard' }%>
+	<div id="content">
+		<div class="outer">
+			<div class="inner bg-light lter">
+				<div>
+					<h3>Student Dashboard</h3>
+					<hr>
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class="col-md-3 col-sm-3">
+								<% if current_user.active? %>
+									<%= link_to student_pay_fees_school_path(@current_user) do%>
+										<div class="counting-box" id="encounter">
+											<%= image_tag ('Schlogo.png')%>
+											<h4 class="count-this">1582</h4>
+											<p>Pay Fee For School</p>
+										</div>
+									<%end%>
+								<%else%>
+									<a href="#applyModal" data-toggle="modal">
+										<div class="counting-box" id="encounter">
+											<%= image_tag ('Schlogo.png')%>
+											<h4 class="count-this">1582</h4>
+											<p>Pay Fee For School</p>
+										</div>
+									</a>
+								<%end%>
+							</div>
+							<div class="col-md-3 col-sm-3">
+								<% if current_user.active? %>
+									<%= link_to student_pay_fees_tutor_path(@current_user) do%>
+										<div class="counting-box" id="locations">
+											<%= image_tag ('tlogo.png')%>
+											<h4 class="count-this">312</h4>
+											<p>Pay Fee For Tutor</p>
+										</div>
+									<%end%>
+								<%else%>
+									<a href="#applyModal" data-toggle="modal">
+										<div class="counting-box" id="encounter">
+											<%= image_tag ('tlogo.png')%>
+											<h4 class="count-this">1582</h4>
+											<p>Pay Fee For Tutor</p>
+										</div>
+									</a>
+								<%end%>
+							</div>
+							<div class="col-md-3 col-sm-3">
+								<% if current_user.active? %>
+									<%= link_to student_schools_path(@current_user) do%>
+										<div class="counting-box" id="encounter">
+											<%= image_tag ('Schlogo.png')%>
+											<h4 class="count-this"><%=@schools_count%></h4>
+											<p>Apply To School</p>
+										</div>
+									<%end%>
+								<%else%>
+									<a href="#applyModal" data-toggle="modal">
+										<div class="counting-box" id="encounter">
+											<%= image_tag ('Schlogo.png')%>
+											<h4 class="count-this">1582</h4>
+											<p>Apply To School</p>
+										</div>
+									</a>
+								<%end%>
+							</div>
+							<div class="col-md-3 col-sm-3">
+								<% if current_user.active? %>
+									<%= link_to student_teachers_path(@current_user) do%>
+									<div class="counting-box" id="locations">
+										<%= image_tag ('tlogo.png')%>
+										<h4 class="count-this"><%=@teachers_count%></h4>
+										<p>Apply To Teacher</p>
+									</div>
+								<%end%>
+								<%else%>
+									<a href="#applyModal" data-toggle="modal">
+										<div class="counting-box" id="encounter">
+											<%= image_tag ('tlogo.png')%>
+											<h4 class="count-this">1582</h4>
+											<p>Apply To Teacher</p>
+										</div>
+									</a>
+								<%end%>
+							</div>
+						</div>
+					</div>
+					<hr>
+				</div>
+			</div>
+			<!-- /.inner -->
+		</div>
+		<!-- /.outer -->
+	</div>
+	<!-- /#content -->
+</div>
+<!-- /#wrap -->
+
+<footer class="Footer bg-dark dker">
+	<p>2017 &copy; Tabashi Technology Private Limited</p>
+</footer>
+<!-- /#footer -->
+<!-- #helpModal -->
+<div id="helpModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Modal title</h4>
+			</div>
+			<div class="modal-body">
+				<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<%= render 'layouts/javascripts'%>
+
+<div id="applyModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+              <p>
+                  Hi <%=current_user.name%>, You Acount Is Deactivated, Please Contact to Admin.
+              </p>
+          </div>
+        </div>
+    </div>
+</div>

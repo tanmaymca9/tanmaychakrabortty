@@ -1,0 +1,175 @@
+<title>Apply School</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%= render "layouts/stylesheets"%>
+
+<%= stylesheet_link_tag  "searchbar" %>
+<style type="text/css">
+  .bigbox {
+    border: 1px solid;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    padding: 10px;
+  }
+  .img-responsive.collglogo {
+    width:80px;
+  }
+  .col-md-12.Anxtysf {
+    padding: 20px 0 2px;
+    
+  }
+  .btn.btn-primary.TxtceNtr {
+    float: right;
+  }
+  .paDtpZeRo {
+    margin-top: 0 !important;
+  } 
+</style>  
+
+<div class="bg-dark dk" id="wrap">
+  <%= render "teachers/top"%>
+  <%= render :partial => "teachers/left", :locals => { :active => 'Apply School' }%>
+  <div id="content">
+    <div class="outer">
+      <div class="inner bg-light lter">
+        <h3>Apply School</h3>
+        <hr>
+        <form class="form-wrapper cf">
+          <%= form_tag teacher_schools_path(current_user), :method => 'get' do %>
+            <%= select_tag "name",options_for_select(@name),prompt: "Select School"%>
+            <%= select_tag "city_id",options_for_select(@cities.collect{|p| [p.name, p.id]}),prompt: "Select City"%>
+            <%#= select_tag "qualification",options_for_select(@subjects),prompt: "Select Subject"%>
+            <%= button_tag "Search" ,:class => "sEarch"%>
+          <% end %>
+        </form>
+        <div class="col-md-12">
+          <h3>Schools</h3>
+          <% if @search.present?%>
+            <% @search.each do |search|%>
+              <div class="bigbox">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="col-md-2">
+                      <% if search.profile_image.present?%>
+                        <%= image_tag search.profile_image ,class: "img-thumbnail img-responsive collglogo"%>
+                      <%else%>
+                        <%= image_tag("img.jpg", class: "img-thumbnail img-responsive collglogo")%>
+                      <% end %>
+                    </div>
+                    <div class="col-md-10">
+                      <a href="/users/show?id=<%= search.id %>" target="_blank">
+                        <h4><%= search.name %></h4>
+                        <span> <i class="fa fa-map-marker"></i> <%= search.address%>,
+                          <% if @city = City.find_by_id(search.city_id)%><%= @city.name%><%end%>,
+                          <% if @state = Stat.find_by_id(search.state_id)%><%= @state.name%> <%end%>,
+                          <% if @country = Countr.find_by_id(search.country_id)%><%= @country.name%> <%end%>
+                        </span>
+                      </a>
+                      <%=link_to "Current Openings",teacher_teacher_openings_path(search),class: "btn btn-primary TxtceNtr" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <%end%>
+          <%else%>
+            <% if @schools.present? %>
+              <% @schools.each do |school|%>
+                <div class="bigbox">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="col-md-2">
+                        <% if school.profile_image.present?%>
+                          <%= image_tag school.profile_image ,class: "img-thumbnail img-responsive collglogo"%>
+                        <%else%>
+                          <%= image_tag("img.jpg", class: "img-thumbnail img-responsive collglogo")%>
+                        <% end %>
+                      </div>
+                      <div class="col-md-10">
+                        <a href="/users/show?id=<%= school.id %>" target="_blank">
+                          <h4><%= school.name %></h4>
+                          <span> <i class="fa fa-map-marker"></i> <%= school.address%>,
+                          <% if @city = City.find_by_id(school.city_id)%><%= @city.name%><%end%>,
+                          <% if @state = Stat.find_by_id(school.state_id)%><%= @state.name%> <%end%>,
+                          <% if @country = Countr.find_by_id(school.country_id)%><%= @country.name%> <%end%>
+                          </span>
+                        </a>
+                        <%=link_to "Current Openings",teacher_teacher_openings_path(school),class: "btn btn-primary TxtceNtr" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <%end%>
+            <%else%>
+              <div class="bigbox">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="col-md-2">
+                      <%= image_tag("img.jpg", class: "img-thumbnail img-responsive collglogo")%>
+                    </div>
+                    <div class="col-md-10">
+                      <h4>Indian Institute of Technology (IITB), Mumbai </h4>
+                      <span> <i class="fa fa-map-marker"></i> Mumbai,Maharshtra</span>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
+                      <div class="col-md-3 col-sm-6 col-xs-6">
+                        <i class="fa fa-map-marker "></i> <span>Avg Annual Fees</span>
+                        <h6>1 lakh</h6>
+                      </div>
+                      <div class="col-md-3 col-sm-6 col-xs-6">
+                        <i class="fa fa-map-marker"></i> <span>Avg Annual Fees</span>
+                        <h6>1 lakh</h6>
+                      </div>
+                      <div class="col-md-3 col-sm-6 col-xs-6">
+                        <i class="fa fa-map-marker"></i> <span>Avg Annual Fees</span>
+                        <h6>1 lakh</h6>
+                      </div>
+                      <div class="col-md-3 col-sm-6 col-xs-6">
+                        <button class="btn btn-primary TxtceNtr">Current Openings </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <%end%>
+          <%end%>
+        </div>
+        <hr>
+      </div>
+      <!-- /.inner -->
+    </div>
+    <!-- /.outer -->
+  </div>
+  <!-- /#content -->
+</div>
+<!-- /#wrap -->
+
+<footer class="Footer bg-dark dker">
+    <p>2017 &copy; Tabashi Technology Private Limited</p>
+</footer>
+<!-- /#footer -->
+
+<!-- #helpModal -->
+<div id="helpModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<%= render "layouts/javascripts"%>

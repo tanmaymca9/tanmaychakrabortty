@@ -1,0 +1,154 @@
+
+
+.loginBox {
+    
+    width:70%;
+    margin: 0 auto;
+}
+.log{
+	padding:20px 60px;
+}
+.loginTitle{
+	color:#fff;
+	text-align:center;
+}
+
+
+.btn.btn-primary.btn-block{
+	padding: 10px;
+font-size: 18px;
+margin: 35px 0;
+}
+.lin{
+	color:#fff;
+}
+.user{
+	padding-left:130px;
+}
+.or{
+	text-align: center;
+	font-size: 20px;
+}
+.sirf {
+    width: 50%;
+    padding: 10px;
+    font-size: 18px;
+}
+.mycls{
+	padding:15px 0;
+	font-size:18px;
+}
+.nav-pills > li.active > a.mycls, .nav-pills > li.active > a.mycls:hover, .nav-pills > li.active > a.mycls:focus {
+  background-color: #337ab7;
+color: #fff;
+outline: none;
+margin-bottom: 20px;
+padding: 15px 0px;
+border-radius: 0px;
+}
+.nav-pills > li > a.mycls, .nav-pills > li > a.mycls:hover, .nav-pills > li > a.mycls:focus {
+  background: #c9302c none repeat scroll 0 0;
+  border-radius: 0;
+  color: #ffffff;
+  margin-bottom: 20px;
+  outline: medium none;
+  padding: 15px 0;
+}
+
+@media only screen and (max-width: 768px) {
+.container-fluid.background{
+		height: 550px;
+	}
+
+.loginBox {
+    
+    width: 85%;
+    top: 50px;
+    left: 7%;
+}
+.log{
+	padding:10px 20px;
+}
+
+.loginForm{
+	font-size: 12px;
+	height:30px;
+}
+.btn.btn-primary.btn-block{
+	padding: 5px;
+	font-size: 12px;
+	margin: 15px 0;
+}
+
+.user{
+	padding-left:30px;
+}
+.or{
+	
+	font-size: 12px;
+}
+.sirf {
+    width: 50%;
+    padding: 5px;
+    font-size: 12px;
+}
+.nav-pills > li.active > a.mycls, .nav-pills > li.active > a.mycls:hover, .nav-pills > li.active > a.mycls:focus {
+margin-bottom: 5px;
+padding: 8px 0px;
+font-size:12px;
+}
+.nav-pills > li > a.mycls, .nav-pills > li > a.mycls:hover, .nav-pills > li > a.mycls:focus {
+margin-bottom: 5px;
+padding: 8px 0px;
+font-size:12px;
+}
+	
+}
+@media screen and (max-width: 1280px) and (min-width: 768px) {
+.container-fluid.background{
+		height: 600px;
+	}
+
+.loginBox {
+    width: 50%;
+    top: 50px;
+    left: 26%;
+}
+.log{
+	padding:10px 20px;
+}
+
+.loginForm{
+	font-size: 12px;
+	padding: 0px 4px;
+}
+.btn.btn-primary.btn-block{
+	padding: 5px;
+	font-size: 12px;
+	margin: 15px 0;
+}
+
+.user{
+	padding-left:30px;
+}
+.or{
+	
+	font-size: 12px;
+}
+.sirf {
+    width: 50%;
+    padding: 5px;
+    font-size: 12px;
+}
+.nav-pills > li.active > a.mycls, .nav-pills > li.active > a.mycls:hover, .nav-pills > li.active > a.mycls:focus {
+margin-bottom: 5px;
+padding: 8px 0px;
+font-size:12px;
+}
+.nav-pills > li > a.mycls, .nav-pills > li > a.mycls:hover, .nav-pills > li > a.mycls:focus {
+margin-bottom: 5px;
+padding: 8px 0px;
+font-size:12px;
+}
+	
+}

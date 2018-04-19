@@ -1,0 +1,77 @@
+<title>Apply School</title>
+<%= render "layouts/stylesheets"%>
+
+<div class="bg-dark dk" id="wrap">
+  <%= render "students/top"%>
+  <%= render :partial => "students/left", :locals => { :active => 'Teacher' }%>
+  <div id="content">
+    <div class="outer">
+      <div class="inner bg-light lter">
+        <h4><p><font size="3" color="blue"> Hi <%=current_user.name%>, You are applying for <%=@teacher.name%> </font></p></h4>
+        <div class="row vdiocont">    
+          <%= form_for @apply_teacher, url: student_apply_teacher_path do |f| %>
+            <div class="form-group margunrve">
+              <label for="email">Name</label>
+              <%=f.text_field :name, class: "form-control",value: current_user.name %>
+            </div>
+            <div class="form-group margunrve">
+              <label for="pwd">Email</label>
+              <%=f.email_field :email, class: "form-control",value: current_user.email %>
+            </div>
+            <div class="form-group margunrve">
+              <label for="email">Phone No</label>
+              <%= f.text_field :phone_no, class: "form-control",value: current_user.phone_no%>
+            </div>
+            <div class="form-group margunrve">
+              <label for="email">Description</label>
+              <%= f.text_area :description, class: "form-control"%>
+            </div>
+            <div class="form-group margunrve text-center">
+              <%= f.hidden_field :teacher_id, value: params[:student_id]%>
+              <%= f.hidden_field :user_role, value: current_user.role%>
+              <%=f.submit "Submit", class: "btn btn-default"%>
+              <button type="submit" class="btn btn-default">Cancel</button>
+            </div>
+          <%end%> 
+        </div>
+      </div>
+      <!-- /.inner -->
+    </div>
+    <!-- /.outer -->
+  </div>
+  <!-- /#content -->
+</div>
+<!-- /#wrap -->
+
+<footer class="Footer bg-dark dker">
+    <p>2017 &copy; Tabashi Technology Private Limited</p>
+</footer>
+<!-- /#footer -->
+
+<!-- #helpModal -->
+<div id="helpModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+          <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+              et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+              culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+      <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<%= render "layouts/javascripts"%>

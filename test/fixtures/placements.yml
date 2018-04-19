@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  companies_visited: MyString
+  students_placed: MyString
+  total_students: MyString
+  year: MyString
+  user_id: 1
+
+two:
+  title: MyString
+  description: MyText
+  companies_visited: MyString
+  students_placed: MyString
+  total_students: MyString
+  year: MyString
+  user_id: 1

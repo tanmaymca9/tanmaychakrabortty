@@ -1,0 +1,79 @@
+<title>Teachers</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%= render "layouts/stylesheets"%>
+
+
+<div class="bg-dark dk" id="wrap">
+  <%= render "teachers/top"%>
+  <%= render :partial => "teachers/left", :locals => { :active => 'Videos' }%>
+  <div id="content">
+    <div class="outer">
+      <div class="inner bg-light lter">
+        <h4>Generated Demo Videos</h4> 
+        <div class="ADDcorsen text-right">
+          <%=link_to "Back",teachers_path, class: "btn btn-primary"%>
+          <%=link_to "Add Demo Video",teacher_create_demo_videos_path,class: "btn btn-primary"%>
+        </div> 
+        <div class="table-responsive ">          
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <% @demo_videos.each do |video|%>
+              <tbody>
+                <tr>
+                  <td><%=video.title%></td>
+                  <td><%=video.description%></td>
+                  <td>
+                    <%=link_to "Edit",teacher_update_demo_videos_path(video),class: "btn btn-primary btn-xs"%>
+                    <%=link_to "Delete",teacher_destroy_demo_video_path(video),class: "btn btn-danger btn-xs", data: { confirm: "Do you to want to Delete?" }%>
+                  </td>
+                </tr>
+              </tbody>
+            <%end%>
+          </table>
+        </div>  
+      </div>
+      <!-- /.inner -->
+    </div>
+    <!-- /.outer -->
+  </div>
+  <!-- /#content -->
+</div>
+<!-- /#wrap -->
+
+<footer class="Footer bg-dark dker">
+    <p>2017 &copy; Tabashi Technology Private Limited</p>
+</footer>
+<!-- /#footer -->
+<!-- #helpModal -->
+<div id="helpModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+          <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+              et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+              culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<%= render "layouts/javascripts"%>

@@ -1,0 +1,179 @@
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>login</title>
+  
+ <!--  <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css"> -->
+
+
+   <%= stylesheet_link_tag  "bootstrap.min" %>
+   <%= stylesheet_link_tag  "font-awesome.min" %>
+   <%= stylesheet_link_tag  "style" %>
+   <%= stylesheet_link_tag  "login" %>
+
+
+    <div class="container-fluid backgrdimg">  
+  <header class="st-navbar">
+      <nav class="navbar navbar-default navbar-fixed-top clearfix" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sept-main-nav">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand CstLogo" href="index.html"><img src="/assets/logo1.png" alt="" class="img-responsive imgsize"></a>
+          </div>
+          
+          <div class="collapse navbar-collapse main-nav" id="sept-main-nav">
+            <ul class="nav navbar-nav navbar-right navrightmnu">
+              <li class="active"><a href="index.html">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#service">Service</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+              <li><a href="#">Login</a></li>
+              <li><%= link_to "Sign Up",new_user_registration_path%></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    
+  <div id="login-box">
+    <div class="row mainrowcust">
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 padzerosty">
+          <div class="leftone">
+            <h1>Sign In</h1>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= f.text_field :email, autofocus: true ,placeholder: "E-mail" %>
+            <!-- <input type="text" name="email" placeholder="E-mail" /> -->
+            <%= f.password_field :password, autocomplete: "off",placeholder: "Password" %>
+            <!-- <input type="password" name="password" placeholder="Password" /> -->
+            <!-- <input type="submit" name="signup_submit" value="Sign in" /> -->
+             <%= f.submit "Log in" %>
+            <div class="signin-text">
+              <div class="text-left">
+                <%= link_to "Forgot Password?",new_password_path(resource_name),class: "text-center"%>
+                <!-- <p><a href="#" class="text-center"> Forgot Password? </a></p> -->
+              </div>
+              <div class="text-right">
+                <%= link_to "Create New Account",new_user_registration_path,class: "text-center"%>
+              </div>
+              <div class="clear"> </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 padzerosty">
+            <div class="right">
+            <div class="scoilbtnctr">
+            
+            <button class="social-signin facebook">Sign In with facebook</button>
+            <button class="social-signin twitter">Sign In with Twitter</button>
+            <button class="social-signin google">Sign In with Google+</button>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+  <footer class="site-footer">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            &copy; <a href=""></a> 2018.Powered by Tabashi Technology Private Limited
+            
+          </div>
+        </div>
+        </div>
+    </footer>
+    <footer class="site-footerone">
+      <div class="container-fluid">
+    <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="col-md-4 col-sm-4">
+            <h4 class="hfclsd">Eduoracle</h4>
+            <a href="#" class="anChstyle">Contact Us</a>  
+            <a href="#" class="anChstyle">Private Policy</a>  
+            <a href="#" class="anChstyle">Term & Conditions - Refund Policy</a> 
+            </div>  
+            <div class="col-md-4 col-sm-4">
+              <h4 class="hfclsd">Contact Us</h4>
+              <p class="margzero">Email : abc@gmail.com</p>
+              <p class="margzero">Phone No : 675890829</p>
+              <p class="margzero">Fax No : 675890829</p>
+            </div>  
+            <div class="col-md-4 col-sm-4">
+              <h4 class="hfclsd">Social Connect</h4>
+              <a href="#" class="">
+                <img src="/assets/facebook.png" class="img-responsive smediasixe"/>
+              </a>
+              <a href="#" class="">
+                <img src="/assets/twitter.png" class="img-responsive smediasixe"/>
+              </a>  
+              <a href="#" class="">
+                <img src="/assets/google-plus.png" class="img-responsive smediasixe"/>
+              </a>  
+              <a href="#" class="">
+                <img src="/assets/pinterest.png" class="img-responsive smediasixe"/>
+              </a>
+
+              <a href="#" class="platsytr">
+                <img src="/assets/play.png" class="img-responsive playimgsize"/>
+              </a>
+
+
+            </div>  
+            
+          </div>
+        </div>
+      </div>
+    </footer>
+  <!-- <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.stellar.js"></script>
+    <script src="js/jquery.appear.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/script.js"></script> -->
+
+
+
+<%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "bootstrap.min" %>
+<%= javascript_include_tag "jquery.stellar" %>
+<%= javascript_include_tag "jquery.appear" %>
+<%= javascript_include_tag "jquery.nicescroll.min" %>
+<%= javascript_include_tag "script" %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

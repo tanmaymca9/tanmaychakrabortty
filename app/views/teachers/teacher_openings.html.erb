@@ -1,0 +1,84 @@
+<title>Current Requirements</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%= render "layouts/stylesheets"%>
+
+<style>
+.teAChbox {
+  border: 5px solid;
+  padding: 0 10px;
+}
+.col-md-6.col6cust {
+  margin: 5px 0;
+}
+.Aplybtn {
+  text-align: right;
+}
+
+</style>
+
+<%= render "teachers/top"%>
+<%= render :partial => "teachers/left", :locals => { :active => 'Apply School' }%>
+<div id="content">
+    <div class="outer">
+        <div class="inner bg-light lter">
+            <div class="container-fluid background">
+                <div class="loginBox">
+                    <div class="row">
+                        <% if @teachers.present? %>
+                            <% @teachers.each do |teacher|%>
+                              	<div class="col-md-6 col6cust">
+                                    <div class="teAChbox">
+                                        <h4> Hi,We Are Looking For <%=teacher.subject%> Teacher </h4>
+                                        <h5>Qualification : <%=teacher.qualification%></h5>
+                                        <h5>Experience : <%=teacher.experience%></h5>
+                                        <h5>Level : <%=teacher.level%></h5>
+                                        <h5>Salary : <%=teacher.annual_salary%></h5>
+                                        <h5><% if teacher.job_type?%>
+                                            Job Type : Part Time
+                                            <%else%>Job Type : Full Time<%end%></h5>
+                                        <div class="Aplybtn">
+                                            <%@id = AppliedSchool.find_by_user_id_and_school_id(current_user, teacher)%>
+                                            <%if @id.present?%>
+                                                <button class="btn btn-primary TxtceNtr" data-toggle="modal" href="#applyModal<%=teacher.id%>">Apply Now </button>
+                                            <%else%>
+                                                <%=link_to "Apply",teacher_apply_school_path(teacher),class: "btn btn-primary"%>
+                                            <%end%>
+                                        </div>	
+                                    </div>
+                                </div>
+                                <div id="applyModal<%=teacher.id%>" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                              <h4 class="modal-title">School</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                              <p>
+                                                  Hi <%=current_user.name%>, You already applied for <%=teacher.subject%>
+                                              </p>
+                                            </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            <%end%>
+                        <% else %>
+                            <div class="col-md-6 col6cust">
+                                <div class="teAChbox">
+                                    Hi <%=current_user.name%>, Sorry Currently no openings!
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+   
+
+<footer class="Footer bg-dark dker">
+    <p>2017 &copy; Tabashi Technology Private Limited</p>
+</footer>
+
+<%= render "layouts/javascripts"%>

@@ -1,0 +1,25 @@
+<header class="st-navbar">
+  <nav class="navbar navbar-default navbar-fixed-top clearfix" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sept-main-nav">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to image_tag('logoedu.png',class: "img-responsive imgsize"),root_path, class: "navbar-brand CstLogo" %>
+      </div>
+      <div class="collapse navbar-collapse main-nav" id="sept-main-nav">
+        <ul class="nav navbar-nav navbar-right navrightmnu">
+          <li class="active"><%= link_to "Home",root_path%></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#service">Service</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><%= link_to "Login", new_user_session_path%></li>
+          <li><%= link_to "Sign Up",new_user_registration_path%></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

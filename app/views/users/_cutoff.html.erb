@@ -1,0 +1,60 @@
+		<div id="cutoff">
+				<div class="container">
+					<div class="row overviewBox">
+						<h3 class="elihe">IITB - JEE Advanced 2017 Cutoffs </h3>
+						<div class="tabOx">
+						<div class="table-responsive">          
+						<table class="table table-striped">
+							<thead>
+							  <tr>
+								<th>COURSE NAME</th>
+								<th>CATEGORY</th>
+								<th>RANK</th>
+							  </tr>
+							</thead>
+							<tbody>
+								<% if @course_detail.present? %>
+								<% @course_detail.each do |course|%>
+							  <tr>
+								<td><%= course.degree_name.titleize%> in <%= course.course_name.titleize %></td>
+								<% if course.course_type == true%>
+								<td>Regular</td>
+								<% elsif course.course_type == false%>
+								<td>Correspondence</td>
+								<%end%>
+								 <td>john@example.com</td>
+							  </tr>
+							 <%end%>
+							 <%else%>
+							  <td>No Data Yet</td>
+							  <td>No Data Yet</td>
+							  <td>No Data Yet</td>
+							 <%end%>
+							</tbody>
+						</table>
+						</div>
+						</div>
+						</div>
+						<div class="row overviewBox">
+								<span class="overview">Contact Details of <%= @college.name%>,<%= @college.city.capitalize %></span>
+								<hr>
+								<div class="row">
+									<div class="col-sm-12">
+										
+										<div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
+											<p class="contact">Contact No:&nbsp;<span class="Detastpd"> <%= @college.phone_no %></span></p>
+											<p class="contact"> Email ID: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="Detastpd"><%= @college.email %></span></p>
+											<p class="contact"> Website:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><a target="_blank" class="HanD" href="<%= @college.website%>"><%= @college.website%></a></span></p>
+											<p class="contact"> Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><%= @college.address %></span></p>
+										</div>
+										<div class="col-sm-12 col-xs-12 col-md-8 col-lg-8">
+											
+											<!-- <iframe width="100%" height="200" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJI1xm2AUVrjsR-fnwFcWCcMg&key=AIzaSyAVFg8wqguXEK6ouBrHpN5ED1JNIL9UAu8" ></iframe> -->
+									
+										</div>
+									</div>
+								</div>
+							</div>
+		
+				</div>	
+			</div>
